@@ -1,17 +1,18 @@
-// An assistant answer: Markdown text with citation chips, a status badge, warnings,
-// the list of sources, and the collapsible agent trace.
+// An assistant answer: status label, Markdown text with citation chips, warnings,
+// the list of sources, and the agent trace rendered as a timeline.
 
 import Markdown from 'react-markdown'
 import type { AnswerStatus, Citation, Message } from '../types'
+import { ChevronIcon, DocIcon } from './icons'
 
 const STATUS_LABEL: Record<AnswerStatus, string> = {
-  answered: 'Answered',
+  answered: 'Answered from documents',
   partial: 'Partly documented',
   insufficient_evidence: 'Not documented',
-  conflict: 'Conflicting sources',
-  memory: 'Memory',
-  chat: 'Chat',
-  error: 'Model unavailable',
+  conflict: 'Sources disagree',
+  memory: 'Memory updated',
+  chat: '',
+  error: 'Model unavailable · showing passages',
 }
 
 // "[pricing:1]" or "[pricing:1, sla:0]" -> one Markdown link per id, rendered as a chip below.
@@ -20,6 +21,22 @@ const CITATION_GROUP = /\[([a-z0-9-]+:\d+(?:\s*[,;]\s*[a-z0-9-]+:\d+)*)\]/g
 function linkCitations(text: string): string {
   return text.replace(CITATION_GROUP, (_, group: string) =>
     group.split(/\s*[,;]\s*/).map(id => `[${id}](#cite-${id})`).join(' '))
+}
+
+// Trace lines look like "Coordinator: route=research | ..." or "ResearchAgent round 1: ...".
+// Map the prefix to the agent that wrote it, so the timeline shows who did what.
+const AGENTS: [prefix: string, name: string][] = [
+  ['MemoryAgent', 'Memory agent'], ['Coordinator', 'Coordinator'], ['ResearchAgent', 'Research agent'],
+  ['AnalystAgent', 'Analyst'], ['VerifierAgent', 'Verifier'], ['Responder', 'Responder'],
+]
+
+function parseTrace(line: string): { agent: string; step: string; detail: string } {
+  const colon = line.indexOf(':')
+  const head = colon > 0 ? line.slice(0, colon) : line
+  const detail = colon > 0 ? line.slice(colon + 1).trim() : ''
+  const match = AGENTS.find(([prefix]) => head.startsWith(prefix))
+  const step = match ? head.slice(match[0].length).replace(/^[.\s(]+|\)$/g, '') : ''
+  return { agent: match?.[1] ?? head, step, detail }
 }
 
 interface Props {
@@ -35,9 +52,9 @@ export default function AnswerMessage({ message, onOpenSource }: Props) {
 
   return (
     <div className="msg assistant">
-      <div className="bubble">
-        {status && status !== 'chat' && (
-          <span className={`badge status-${status}`}>{STATUS_LABEL[status] ?? status}</span>
+      <article className="answer">
+        {status && STATUS_LABEL[status] && (
+          <div className={`status-label status-${status}`}><i />{STATUS_LABEL[status]}</div>
         )}
 
         <div className="markdown">
@@ -67,14 +84,17 @@ export default function AnswerMessage({ message, onOpenSource }: Props) {
 
         {sources.size > 0 && (
           <div className="sources">
-            <div className="section-label">Sources</div>
+            <div className="label">Sources</div>
             <ul>
               {[...sources.values()].map(c => (
                 <li key={c.chunk_id}>
-                  <button type="button" className="source-link" onClick={() => onOpenSource(c.chunk_id)}>
-                    <code>{c.chunk_id}</code> {c.title}
+                  <button type="button" className="source-row" onClick={() => onOpenSource(c.chunk_id)}>
+                    <DocIcon size={15} />
+                    <span className="source-title">{c.title}</span>
+                    <code>{c.chunk_id}</code>
+                    <span className="source-date">{c.published}</span>
+                    <ChevronIcon size={14} className="source-chevron" />
                   </button>
-                  <span className="muted"> · published {c.published}</span>
                 </li>
               ))}
             </ul>
@@ -83,11 +103,21 @@ export default function AnswerMessage({ message, onOpenSource }: Props) {
 
         {meta.trace && meta.trace.length > 0 && (
           <details className="trace">
-            <summary>Agent trace ({meta.trace.length} steps)</summary>
-            <ol>{meta.trace.map((t, i) => <li key={i}><code>{t}</code></li>)}</ol>
+            <summary><ChevronIcon size={14} className="trace-chevron" /> How the agents worked · {meta.trace.length} steps</summary>
+            <ol className="timeline">
+              {meta.trace.map((line, i) => {
+                const t = parseTrace(line)
+                return (
+                  <li key={i}>
+                    <span className="tl-agent">{t.agent}{t.step && <em> {t.step}</em>}</span>
+                    <span className="tl-detail">{t.detail}</span>
+                  </li>
+                )
+              })}
+            </ol>
           </details>
         )}
-      </div>
+      </article>
     </div>
   )
 }

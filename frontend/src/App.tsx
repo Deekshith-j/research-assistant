@@ -4,6 +4,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { api } from './api'
 import ChatView from './components/ChatView'
+import { ChatIcon, MemoryIcon } from './components/icons'
 import MemoryPanel from './components/MemoryPanel'
 import Sidebar from './components/Sidebar'
 import type { DemoUser, Session, Status } from './types'
@@ -69,8 +70,13 @@ export default function App() {
 
   const currentUser = users.find(u => u.id === userId)
 
+  const title = tab === 'memory'
+    ? 'Memory'
+    : sessions.find(s => s.id === sessionId)?.title.replace(/^["“]/, '') ?? 'Conversation'
+
   return (
     <div className="app">
+      <a className="skip-link" href="#main">Skip to content</a>
       <Sidebar
         users={users}
         userId={userId}
@@ -83,13 +89,14 @@ export default function App() {
         status={status}
       />
 
-      <main className="main">
+      <main className="main" id="main">
         <header className="topbar">
-          <nav className="tabs" role="tablist">
+          <h1 className="topbar-title" title={title}>{title}</h1>
+          <nav className="tabs" role="tablist" aria-label="View">
             <button role="tab" aria-selected={tab === 'chat'} className={tab === 'chat' ? 'active' : ''}
-              onClick={() => setTab('chat')}>Chat</button>
+              onClick={() => setTab('chat')}><ChatIcon /> Chat</button>
             <button role="tab" aria-selected={tab === 'memory'} className={tab === 'memory' ? 'active' : ''}
-              onClick={() => setTab('memory')}>Memory</button>
+              onClick={() => setTab('memory')}><MemoryIcon /> Memory</button>
           </nav>
           {currentUser && <span className="whoami">{currentUser.name} · {currentUser.role}</span>}
         </header>

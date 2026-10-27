@@ -92,3 +92,13 @@ Build a **multi-agent research assistant** for the fictional company *Asterline 
 - [x] Added **source-passage viewer**: click a citation chip or source → side panel with the verbatim corpus passage, date, version, category, source URL (`GET /api/chunks/{id}`, `SourcePanel.tsx`). Makes every claim verifiable in one click (grounded research = 20% of the grade)
 - [x] API test for the chunk endpoint → 25 tests pass; lint clean; browser-checked (chip, Sources list, Esc, click-outside)
 - [x] Design note: added a "User interface" paragraph (API scoping, badges, citation viewer, memory inspector)
+
+## Professional UI pass
+
+- [x] Audited the UI against a design checklist, then upgraded in place (same React + CSS stack)
+- [x] Typography: Geist + Geist Mono bundled locally (no CDN), 500/600 weights, sentence-case labels, tabular numbers, balanced headings
+- [x] Color: one warm-neutral gray family + one muted teal accent (replaced saturated blue); sidebar matches the page tone; `--on-accent` token keeps button contrast ≥ 7:1 in dark mode
+- [x] Components: account switcher with initials, square status tags, source rows, agent trace as a labelled timeline (Memory agent → Coordinator → Research → Analyst → Verifier), custom SVG icon set, starter-question cards
+- [x] States: skeleton loaders, inline two-step confirms instead of `window.confirm`, focus rings, hover/press feedback, entrance and slide-over motion (off with reduced-motion)
+- [x] Accessibility/meta: skip link, aria labels, meta description and theme-color, `100dvh`
+- [x] Browser-checked desktop light/dark and 375 px mobile; fixed two layout bugs found (conversation list horizontal scroll; answers clipped on mobile from a `1fr` grid column)
