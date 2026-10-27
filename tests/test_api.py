@@ -17,6 +17,15 @@ def test_unknown_user_is_rejected(client):
     assert client.get("/api/users/mallory/sessions").status_code == 404
 
 
+def test_chunk_endpoint_returns_exact_passage(client):
+    r = client.get("/api/chunks/handbook:1")
+    assert r.status_code == 200
+    body = r.json()
+    assert body["title"] == "Employee handbook" and body["published"] == "2026-01-05"
+    assert "$175" in body["text"]
+    assert client.get("/api/chunks/nope:9").status_code == 404
+
+
 def test_memory_crud(client):
     r = client.post("/api/users/alice/memories", json={"kind": "profile", "content": "Supports EU customers"})
     assert r.status_code == 201

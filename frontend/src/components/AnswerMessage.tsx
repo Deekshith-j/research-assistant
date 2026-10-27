@@ -22,7 +22,13 @@ function linkCitations(text: string): string {
     group.split(/\s*[,;]\s*/).map(id => `[${id}](#cite-${id})`).join(' '))
 }
 
-export default function AnswerMessage({ message }: { message: Message }) {
+interface Props {
+  message: Message
+  /** Open the source panel for a chunk id. */
+  onOpenSource: (chunkId: string) => void
+}
+
+export default function AnswerMessage({ message, onOpenSource }: Props) {
   const { meta } = message
   const status = meta.status
   const sources = new Map<string, Citation>((meta.citations ?? []).map(c => [c.chunk_id, c]))
@@ -37,15 +43,16 @@ export default function AnswerMessage({ message }: { message: Message }) {
         <div className="markdown">
           <Markdown
             components={{
-              // Citation links become chips; hovering shows the document title and date.
+              // Citation links become chips: hover shows title + date, click opens the passage.
               a: ({ href, children }) => {
                 if (href?.startsWith('#cite-')) {
                   const id = href.slice('#cite-'.length)
                   const src = sources.get(id)
                   return (
-                    <a className="cite" href={`#src-${id}`} title={src ? `${src.title} · ${src.published}` : id}>
+                    <button type="button" className="cite" onClick={() => onOpenSource(id)}
+                      title={src ? `${src.title} · ${src.published} (click to read)` : id}>
                       {children}
-                    </a>
+                    </button>
                   )
                 }
                 return <a href={href} target="_blank" rel="noreferrer">{children}</a>
@@ -63,8 +70,11 @@ export default function AnswerMessage({ message }: { message: Message }) {
             <div className="section-label">Sources</div>
             <ul>
               {[...sources.values()].map(c => (
-                <li key={c.chunk_id} id={`src-${c.chunk_id}`}>
-                  <code>{c.chunk_id}</code> {c.title} <span className="muted">· published {c.published}</span>
+                <li key={c.chunk_id}>
+                  <button type="button" className="source-link" onClick={() => onOpenSource(c.chunk_id)}>
+                    <code>{c.chunk_id}</code> {c.title}
+                  </button>
+                  <span className="muted"> · published {c.published}</span>
                 </li>
               ))}
             </ul>

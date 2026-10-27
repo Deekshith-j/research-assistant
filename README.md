@@ -6,7 +6,8 @@ A multi-agent assistant that answers questions about the (fictional) Asterline L
 - 5 cooperating agents in a LangGraph workflow: Memory Agent, Coordinator, Research Agent, Analyst, Verifier
 - Local embeddings (fastembed `bge-small`) + local vector store (Chroma) + BM25 hybrid search
 - Per-user memory in SQLite with correction, forgetting, a policy gate and strict user isolation
-- React web UI (served by a FastAPI backend) with chat, citation chips, sources, agent trace, and a memory inspector
+- React web UI (served by a FastAPI backend) with chat, clickable citations that open the exact source passage,
+  agent trace, and a memory inspector
 - LangSmith tracing of every agent step
 
 Read the [design note](docs/DESIGN.md) for architecture and trade-offs, and [EVALUATION.md](docs/EVALUATION.md)
@@ -110,7 +111,7 @@ assistant/
 frontend/                   React + TypeScript (Vite)
   src/App.tsx               shell: user, conversation and tab state
   src/api.ts, types.ts      typed client for the REST API
-  src/components/           Sidebar, ChatView, AnswerMessage (citations), MemoryPanel
+  src/components/           Sidebar, ChatView, AnswerMessage (citations), SourcePanel, MemoryPanel
   dist/                     pre-built UI served by run.py (committed)
 data/corpus.jsonl           the unchanged corpus (75 chunks)
 eval/                       test cases, scenarios, runners, results

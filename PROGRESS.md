@@ -85,3 +85,10 @@ Build a **multi-agent research assistant** for the fictional company *Asterline 
 - [x] Lint clean (oxlint), type-check + build pass; `dist/` committed so Node isn't needed to run
 - [x] Browser check: live follow-up answered with citation; secret rejected in Memory form; Bob sees none of Alice's data; phone width (375 px) fixed (conversation list was hidden); light + dark mode
 - [x] Removed `app.py` and Streamlit from requirements; README, DESIGN diagram updated
+
+## Requirement audit + source-passage viewer
+
+- [x] Audited every requirement and deliverable in the brief against the repo: all covered. Still on the user: LangSmith sharing, reviewing `docs/AI_USE.md`, rotating keys
+- [x] Added **source-passage viewer**: click a citation chip or source → side panel with the verbatim corpus passage, date, version, category, source URL (`GET /api/chunks/{id}`, `SourcePanel.tsx`). Makes every claim verifiable in one click (grounded research = 20% of the grade)
+- [x] API test for the chunk endpoint → 25 tests pass; lint clean; browser-checked (chip, Sources list, Esc, click-outside)
+- [x] Design note: added a "User interface" paragraph (API scoping, badges, citation viewer, memory inspector)

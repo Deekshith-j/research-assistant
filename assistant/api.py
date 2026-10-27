@@ -22,6 +22,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from assistant.config import PROJECT_ROOT
+from assistant.knowledge.corpus import chunks_by_id
 from assistant.llm import llm_available
 from assistant.memory.store import MemoryRejected, UserStore
 from assistant.service import AssistantService
@@ -77,6 +78,18 @@ def create_app(service: AssistantService | None = None) -> FastAPI:
     @app.get("/api/users")
     def users() -> list[dict]:
         return [{"id": uid, **info} for uid, info in DEMO_USERS.items()]
+
+    # ----------------------------------------------------------------- source passages
+    @app.get("/api/chunks/{chunk_id}")
+    def chunk(chunk_id: str) -> dict:
+        """The exact corpus passage behind a citation, so users can verify answers.
+
+        Company documents are shared knowledge (not user data), so this route is not per-user.
+        """
+        found = chunks_by_id().get(chunk_id)
+        if found is None:
+            raise HTTPException(404, "Unknown chunk id")
+        return {**asdict(found), "published": found.published_iso}
 
     # ----------------------------------------------------------------- conversations
     @app.get("/api/users/{user_id}/sessions")

@@ -68,6 +68,19 @@ export interface TurnResult {
   latency_s: number
 }
 
+/** One corpus passage, as returned by GET /api/chunks/{id}. */
+export interface Chunk {
+  chunk_id: string
+  doc_id: string
+  title: string
+  category: string
+  owner: string
+  source_url: string
+  published: string
+  version: string
+  text: string
+}
+
 export type MemoryKind = 'profile' | 'preference' | 'work_context'
 
 export interface Memory {

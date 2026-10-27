@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { api } from '../api'
 import type { Message } from '../types'
 import AnswerMessage from './AnswerMessage'
+import SourcePanel from './SourcePanel'
 
 const EXAMPLES = [
   'What is the weekly on-call stipend?',
@@ -23,6 +24,7 @@ export default function ChatView({ userId, sessionId, onTurnComplete }: Props) {
   const [draft, setDraft] = useState('')
   const [pending, setPending] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [openSource, setOpenSource] = useState<string | null>(null) // chunk id shown in the side panel
   const bottomRef = useRef<HTMLDivElement>(null)
 
   // Load the stored transcript (it survives restarts; it lives in SQLite).
@@ -70,7 +72,7 @@ export default function ChatView({ userId, sessionId, onTurnComplete }: Props) {
         {messages.map((m, i) =>
           m.role === 'user'
             ? <div key={i} className="msg user"><div className="bubble">{m.content}</div></div>
-            : <AnswerMessage key={i} message={m} />,
+            : <AnswerMessage key={i} message={m} onOpenSource={setOpenSource} />,
         )}
 
         {pending && (
@@ -96,6 +98,8 @@ export default function ChatView({ userId, sessionId, onTurnComplete }: Props) {
         />
         <button className="btn primary" type="submit" disabled={pending || !draft.trim()}>Send</button>
       </form>
+
+      {openSource && <SourcePanel chunkId={openSource} onClose={() => setOpenSource(null)} />}
     </section>
   )
 }

@@ -179,14 +179,31 @@ h2, h3, h4 { margin: 0; line-height: 1.3; }
 .markdown td, .markdown th { border: 1px solid var(--border); padding: 4px 8px; }
 .cite {
   display: inline-block; font-family: ui-monospace, Consolas, monospace; font-size: 0.75em;
-  padding: 0 6px; margin: 0 1px; border-radius: 6px; vertical-align: 1px;
-  background: var(--accent-soft); color: var(--accent); text-decoration: none;
+  padding: 0 6px; margin: 0 1px; border-radius: 6px; vertical-align: 1px; line-height: 1.6;
+  background: var(--accent-soft); color: var(--accent); border: 0; cursor: pointer;
 }
 .cite:hover { text-decoration: underline; }
 
 .sources { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
 .sources ul { margin: 6px 0 0; padding-left: 18px; font-size: 0.9em; }
-.sources li:target { background: var(--accent-soft); border-radius: 4px; }
+.source-link { background: none; border: 0; padding: 0; cursor: pointer; color: var(--accent); text-align: left; }
+.source-link:hover { text-decoration: underline; }
+
+/* Source passage side panel */
+.scrim { position: fixed; inset: 0; background: rgb(0 0 0 / 25%); z-index: 10; }
+.source-panel {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100vw); z-index: 11;
+  background: var(--surface); border-left: 1px solid var(--border); box-shadow: -8px 0 24px rgb(0 0 0 / 12%);
+  padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px;
+}
+.source-panel header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.source-meta { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; font-size: 0.88em; }
+.source-meta dt { color: var(--muted); }
+.source-meta dd { margin: 0; word-break: break-all; }
+.source-text {
+  margin: 0; padding: 14px 16px; border-left: 3px solid var(--accent);
+  background: var(--surface-2); border-radius: 0 8px 8px 0; line-height: 1.65;
+}
 .trace { margin-top: 10px; font-size: 0.85em; }
 .trace summary { cursor: pointer; color: var(--muted); }
 .trace ol { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 4px; }

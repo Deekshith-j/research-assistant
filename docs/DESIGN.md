@@ -42,6 +42,15 @@ All graph nodes appear as named spans in LangSmith (`assistant_turn` → `recall
 `plan`, `research` → `hybrid_search`, `analyse` → `AnalystAgent.draft`, `verify` → `VerifierAgent.check`, ...).
 Each answer also carries a plain-text **agent trace** shown in the UI under "Agent trace".
 
+**User interface.** A React + TypeScript app (Vite) talks to a FastAPI REST API (`assistant/api.py`). `python run.py`
+serves both on port 8000; the built UI is committed, so running needs no Node.js. All per-user routes live under
+`/api/users/{user}/...` and go through the same scoped store as the agents, so another user's conversation returns 404.
+The UI shows:
+- a status badge on each answer: answered / partly documented / not documented / conflicting sources;
+- inline citations as chips. Clicking one opens the **verbatim corpus passage** with its date and version
+  (`GET /api/chunks/{id}`), so every claim can be checked against its evidence in one click;
+- a memory inspector, where Edit = correction, Forget = hard delete, plus correction history and audit log.
+
 ## 3. Agent responsibilities
 
 | Agent | Model | Responsibility | Why separate |

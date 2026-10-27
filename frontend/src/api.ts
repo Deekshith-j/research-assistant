@@ -2,7 +2,7 @@
 // /api/users/{userId}/..., mirroring how the backend scopes data per user.
 
 import type {
-  DemoUser, Memory, MemoryEvent, MemoryKind, Message, Session, Status, TurnResult,
+  Chunk, DemoUser, Memory, MemoryEvent, MemoryKind, Message, Session, Status, TurnResult,
 } from './types'
 
 /** Error carrying the backend's `detail` message so the UI can show it. */
@@ -31,6 +31,7 @@ const user = (userId: string) => `/users/${encodeURIComponent(userId)}`
 export const api = {
   status: () => request<Status>('/status'),
   users: () => request<DemoUser[]>('/users'),
+  chunk: (id: string) => request<Chunk>(`/chunks/${encodeURIComponent(id)}`),
 
   // Conversations
   sessions: (u: string) => request<Session[]>(`${user(u)}/sessions`),
