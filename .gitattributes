@@ -1,0 +1,2 @@
+# Keep the supplied corpus byte-for-byte unchanged (no line-ending conversion).
+data/corpus.jsonl -text
