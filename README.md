@@ -6,7 +6,7 @@ A multi-agent assistant that answers questions about the (fictional) Asterline L
 - 5 cooperating agents in a LangGraph workflow: Memory Agent, Coordinator, Research Agent, Analyst, Verifier
 - Local embeddings (fastembed `bge-small`) + local vector store (Chroma) + BM25 hybrid search
 - Per-user memory in SQLite with correction, forgetting, a policy gate and strict user isolation
-- Streamlit UI with chat, sources, agent trace, and a memory inspector
+- React web UI (served by a FastAPI backend) with chat, citation chips, sources, agent trace, and a memory inspector
 - LangSmith tracing of every agent step
 
 Read the [design note](docs/DESIGN.md) for architecture and trade-offs, and [EVALUATION.md](docs/EVALUATION.md)
@@ -41,11 +41,32 @@ Then edit `.env`:
 ## Launch (one command)
 
 ```bash
-streamlit run app.py
+python run.py
 ```
 
-The first launch downloads the embedding model (~130 MB) and builds the vector index (~30 s). Later launches reuse
-`storage/`. Pick a demo user in the sidebar (alice / bob / carol); each has separate conversations and memories.
+Then open http://localhost:8000. The first launch downloads the embedding model (~130 MB) and builds the vector
+index (~30 s). Later launches reuse `storage/`. Pick a demo user in the sidebar (alice / bob / carol); each has
+separate conversations and memories.
+
+Node.js is **not** needed to run the app: the React UI is pre-built into `frontend/dist` and served by the Python
+backend. API docs are at http://localhost:8000/docs.
+
+### Changing the frontend (optional, needs Node.js 20+)
+
+Keep `python run.py` running for the API, then in a second terminal:
+
+```bash
+cd frontend
+```
+```bash
+npm install
+```
+```bash
+npm run dev
+```
+
+Vite serves the UI with hot reload on http://localhost:5173 and forwards `/api` calls to port 8000.
+Run `npm run build` to update `frontend/dist`, and `npm run lint` to lint.
 
 ### Things to try
 
@@ -75,8 +96,9 @@ Use `--suite research|memory`, `--only R16 M04`, and `--delay 3` for smaller run
 ## Project layout
 
 ```
-app.py                      Streamlit UI (entry point)
+run.py                      entry point: API + web UI on port 8000
 assistant/
+  api.py                    FastAPI REST API (per-user routes) + serves the built UI
   config.py                 settings from .env
   redaction.py              secret removal before LLM / storage / traces
   llm.py                    Groq access: retries, fallback, typed outputs
@@ -85,6 +107,11 @@ assistant/
   agents/                   memory_agent, coordinator, researcher, analyst, verifier, responder, prompts
   knowledge/                corpus loader + hybrid retriever (Chroma + BM25)
   memory/                   SQLite store (per-user) + storage policy
+frontend/                   React + TypeScript (Vite)
+  src/App.tsx               shell: user, conversation and tab state
+  src/api.ts, types.ts      typed client for the REST API
+  src/components/           Sidebar, ChatView, AnswerMessage (citations), MemoryPanel
+  dist/                     pre-built UI served by run.py (committed)
 data/corpus.jsonl           the unchanged corpus (75 chunks)
 eval/                       test cases, scenarios, runners, results
 tests/                      unit tests (no API key needed)

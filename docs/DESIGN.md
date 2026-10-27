@@ -11,7 +11,8 @@ delete those memories. Memory personalises answers but is **never** used as evid
 
 ```mermaid
 flowchart TD
-    UI["Streamlit UI<br/>chat · memory tab · user selector"] --> SVC["AssistantService.ask()<br/>1. redact secrets<br/>2. load session history"]
+    UI["React UI (Vite)<br/>chat · memory tab · user selector"] --> API["FastAPI REST API<br/>/api/users/{user}/..."]
+    API --> SVC["AssistantService.ask()<br/>1. redact secrets<br/>2. load session history"]
     SVC --> RECALL["Memory Agent · recall<br/>(user memories, ranked)"]
     RECALL --> MEM["Memory Agent · update<br/>LLM proposes add/correct/forget<br/>policy gate applies"]
     RECALL --> COORD["Coordinator<br/>route + standalone question<br/>+ search queries"]

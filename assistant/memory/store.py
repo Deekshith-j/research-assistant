@@ -114,7 +114,7 @@ class Store:
 
     @contextmanager
     def connect(self) -> Iterator[sqlite3.Connection]:
-        """Short-lived connection per operation: safe with Streamlit's threads."""
+        """Short-lived connection per operation: safe with the web server's worker threads."""
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA foreign_keys = ON")

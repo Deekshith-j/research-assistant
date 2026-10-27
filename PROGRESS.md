@@ -29,7 +29,7 @@ Build a **multi-agent research assistant** for the fictional company *Asterline 
 | Vector store | Chroma (persistent, `storage/chroma`) + BM25, fused with RRF | Local; BM25 catches exact IDs like `INC-2025-12`, `2.3.1` |
 | Orchestration | LangGraph | Explicit graph, every node traced in LangSmith |
 | Memory store | SQLite, every query scoped by `user_id` | Survives restarts, simple to inspect, isolation by construction |
-| UI | Streamlit | One command, chat + memory inspector + user selector |
+| UI | React + TypeScript (Vite) served by FastAPI (replaced the first Streamlit version) | Dedicated frontend; built files committed so `python run.py` is still the only launch command |
 
 ## Done
 
@@ -72,6 +72,16 @@ Build a **multi-agent research assistant** for the fictional company *Asterline 
 
 ## To do
 
-- [ ] First commit (needs user OK)
+- [x] Committed and pushed to https://github.com/Deekshith-j/research-assistant (`.gitattributes` keeps the corpus byte-identical)
 - [ ] User: share LangSmith project with radialpulse@nxtwave.co.in (LangSmith → Settings → Members, or share the project)
 - [ ] User: push repo to GitHub, review `docs/AI_USE.md`, rotate the API keys after the review (they were pasted in chat)
+
+## Dedicated frontend (replaces Streamlit)
+
+- [x] `assistant/api.py`: FastAPI REST API, every route under `/api/users/{user}/...` and scoped via `Store.for_user`; foreign sessions return 404; policy rejections return 422
+- [x] `run.py`: one command, warms up the retriever, serves API + built UI on http://localhost:8000
+- [x] `frontend/`: React + TypeScript (Vite): sidebar (user selector, conversations, status), chat (citation chips, status badge, sources, agent trace, pending state), memory inspector (grouped by kind, edit = correction, forget, add, forget all, history + audit)
+- [x] `tests/test_api.py`: 4 API tests (CRUD, 422 policy, unknown user, cross-user isolation) → 24 tests pass
+- [x] Lint clean (oxlint), type-check + build pass; `dist/` committed so Node isn't needed to run
+- [x] Browser check: live follow-up answered with citation; secret rejected in Memory form; Bob sees none of Alice's data; phone width (375 px) fixed (conversation list was hidden); light + dark mode
+- [x] Removed `app.py` and Streamlit from requirements; README, DESIGN diagram updated
