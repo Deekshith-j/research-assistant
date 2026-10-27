@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field
 
 from assistant.agents import prompts
 from assistant.agents.context import format_history, format_memories
+from assistant.agents.intent import memory_intent
 from assistant.agents.state import TurnState
 from assistant.llm import LLMUnavailableError, structured_call
 
@@ -32,12 +33,14 @@ def plan_turn(state: TurnState) -> dict:
     try:
         plan = structured_call(Plan, prompts.COORDINATOR, prompt, tier="fast", run_name="Coordinator.plan")
     except LLMUnavailableError as exc:
-        # Safe default: treat it as a research question and search with the raw message.
+        # Without the LLM: clear memory requests still go to the memory route (rule-based),
+        # everything else is treated as research with the raw message.
+        route = "memory" if memory_intent(state["message"]) else "research"
         return {
-            "route": "research",
+            "route": route,
             "standalone_question": state["message"],
             "search_queries": [state["message"]],
-            "trace": [f"Coordinator: LLM unavailable ({exc}); defaulting to research with raw message"],
+            "trace": [f"Coordinator: LLM unavailable ({exc}); rule-based route={route}"],
         }
 
     # Always search with the standalone question too, and cap the number of queries.

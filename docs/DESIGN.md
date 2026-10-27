@@ -130,9 +130,20 @@ When the evidence can't settle it, the answer shows both sides with citations an
 ## 8. Reliability
 
 - Groq client retries with exponential backoff and honours `Retry-After` on HTTP 429.
-- Each call falls back from the main model to the fast one (or vice versa).
-- If every model fails: Coordinator defaults to research, Memory Agent skips (no memory change), Analyst returns the top
-  passages with citations, clearly labelled as "not a verified answer". The app never crashes on provider errors.
+- Each call walks a model chain: main → fast → `GROQ_FALLBACK_MODELS` (default `qwen/qwen3.8-27b`). Each Groq model
+  has its own daily quota, so answers keep working when the first two hit the free 200k tokens/day cap.
+- If a model returns malformed structured output, the same model is retried in JSON mode with the schema in the
+  prompt. Qwen, for example, fails tool calling on the Analyst's nested schema. The final error lists every model's
+  failure, so the cause is visible in the trace.
+- Memory operations are validated: an `add`/`correct` without text, or a `correct`/`forget` without a target id, is
+  rejected, so the call is retried instead of silently losing the user's correction.
+- If every model fails:
+  - the Analyst returns the top passages with citations, clearly labelled "not a verified answer";
+  - **memory stays dependable without the LLM**: rule-based intent detection still routes "what do you remember
+    about me?" (lists memories) and "forget everything" (deletes them);
+  - other memory requests change nothing and say so, pointing to the Memory tab, which works without the LLM.
+
+  The app never crashes on provider errors.
 
 ## 9. Trade-offs
 

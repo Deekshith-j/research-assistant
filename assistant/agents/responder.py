@@ -26,7 +26,10 @@ def describe_memory_ops(ops: list[dict]) -> list[str]:
     """Human-readable lines for each memory operation of this turn."""
     lines = []
     for op in ops:
-        if op["status"] == "rejected":
+        if op["action"] == "unavailable":
+            lines.append("I couldn't process this memory request because the language model is unavailable "
+                         "right now, so nothing was changed. You can view, edit or delete memories in the Memory tab.")
+        elif op["status"] == "rejected":
             lines.append(f"Not remembered ({op.get('detail')}).")
         elif op["action"] == "add":
             lines.append(f"Remembered: \"{op['content']}\"")

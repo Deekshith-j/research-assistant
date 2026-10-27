@@ -40,6 +40,9 @@ class Settings:
     main_model: str
     # Cheaper/faster model for routing and memory extraction (also the fallback).
     fast_model: str
+    # Extra models tried last, e.g. when both models above hit Groq's daily token cap
+    # (each model has its own quota).
+    fallback_models: tuple[str, ...]
     llm_max_retries: int
     llm_timeout_s: int
 
@@ -62,6 +65,9 @@ def load_settings() -> Settings:
         groq_api_key=os.getenv("GROQ_API_KEY") or None,
         main_model=os.getenv("GROQ_MAIN_MODEL", "openai/gpt-oss-120b"),
         fast_model=os.getenv("GROQ_FAST_MODEL", "openai/gpt-oss-20b"),
+        fallback_models=tuple(
+            m.strip() for m in os.getenv("GROQ_FALLBACK_MODELS", "qwen/qwen3.8-27b").split(",") if m.strip()
+        ),
         llm_max_retries=_env_int("LLM_MAX_RETRIES", 4),
         llm_timeout_s=_env_int("LLM_TIMEOUT_S", 60),
         corpus_path=PROJECT_ROOT / "data" / "corpus.jsonl",

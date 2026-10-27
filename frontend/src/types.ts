@@ -26,7 +26,7 @@ export interface Citation {
 }
 
 export interface MemoryOp {
-  action: 'add' | 'correct' | 'forget' | 'forget_all'
+  action: 'add' | 'correct' | 'forget' | 'forget_all' | 'unavailable'
   status: 'applied' | 'rejected'
   kind?: string | null
   content?: string | null

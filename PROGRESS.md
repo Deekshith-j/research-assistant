@@ -102,3 +102,11 @@ Build a **multi-agent research assistant** for the fictional company *Asterline 
 - [x] States: skeleton loaders, inline two-step confirms instead of `window.confirm`, focus rings, hover/press feedback, entrance and slide-over motion (off with reduced-motion)
 - [x] Accessibility/meta: skip link, aria labels, meta description and theme-color, `100dvh`
 - [x] Browser-checked desktop light/dark and 375 px mobile; fixed two layout bugs found (conversation list horizontal scroll; answers clipped on mobile from a `1fr` grid column)
+
+## Acceptance test against the PDF + fixes
+
+- [x] Wrote a 15-turn, 3-user walkthrough of **unseen** questions/sequences, one per PDF requirement, with a mid-session restart (`eval/run_acceptance.py`)
+- [x] First run exposed 3 gaps: memory requests depended on the LLM; a correction with empty text was silently lost; the Qwen fallback failed tool calling (error hidden by fallback reporting)
+- [x] Fixes: extra fallback model `GROQ_FALLBACK_MODELS` (default `qwen/qwen3.8-27b`); JSON-mode retry per model + full error reporting in `llm.py`; `MemoryOp` validator; rule-based memory intents when the LLM is down (`agents/intent.py`)
+- [x] 13 new tests (offline memory, intents, validator) → 37 tests pass
+- [x] Re-run: **15/15** pass (results in `eval/results/acceptance_20261027_2300.md`); documented in EVALUATION.md §5b, DESIGN.md §8, README

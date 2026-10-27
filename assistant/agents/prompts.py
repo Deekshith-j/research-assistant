@@ -11,7 +11,9 @@ Return operations:
            "preference" (how they want answers: length, format, language),
            "work_context" (an ongoing investigation or task they will likely return to).
     Write content as a short third-person statement, e.g. "Supports a Team-plan customer in the EU region".
-- correct: the user changes something already remembered -> give memory_id of the old memory and the new content.
+- correct: the user changes something already remembered -> give memory_id of the old memory AND the full new
+  content (e.g. old "Supports customers on the Launch plan" -> content "Supports customers on the Team plan").
+  add and correct always need content.
 - forget: the user asks to forget/delete something -> give the memory_id(s) that match. Set forget_all=true
   only when they ask to forget everything about them.
 

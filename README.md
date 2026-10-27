@@ -89,8 +89,11 @@ python -m eval.run_retrieval_eval
 ```bash
 python -m eval.run_eval
 ```
+```bash
+python -m eval.run_acceptance
+```
 
-`pytest` and the retrieval evaluation need no API key. The end-to-end evaluation calls Groq. One full run uses roughly
+`pytest` and the retrieval evaluation need no API key. `run_acceptance` replays a 15-turn, 3-user walkthrough with a restart (one message per requirement). The end-to-end evaluation calls Groq. One full run uses roughly
 100k tokens on the fast model, and the free tier allows 200k per model per day, so plan on **about one full run per day**.
 Use `--suite research|memory`, `--only R16 M04`, and `--delay 3` for smaller runs.
 
@@ -122,9 +125,13 @@ docs/                       design note, evaluation report, AI-use disclosure
 ## Costs and limits
 
 Everything runs locally except the LLM calls (Groq) and trace upload (LangSmith), both on free plans. Groq's free tier
-limits requests and tokens per minute/day per model; the app retries on HTTP 429 (honouring `Retry-After`), falls back
-to the second model, and finally shows the top cited passages instead of failing. To use other Groq models, set
-`GROQ_MAIN_MODEL` / `GROQ_FAST_MODEL` in `.env`.
+limits each model to 200k tokens/day; the fallback model is limited to 8k tokens/minute. On HTTP 429 the app:
+1. retries, honouring `Retry-After`;
+2. falls back to the second model, then to `GROQ_FALLBACK_MODELS` (default `qwen/qwen3.8-27b`, which has its own quota);
+3. if everything is exhausted, shows the top cited passages instead of failing.
+
+Memory viewing and "forget everything" keep working without the LLM, and the Memory tab never needs it. To use other
+Groq models, set `GROQ_MAIN_MODEL` / `GROQ_FAST_MODEL` / `GROQ_FALLBACK_MODELS` in `.env`.
 
 ## Privacy notes
 

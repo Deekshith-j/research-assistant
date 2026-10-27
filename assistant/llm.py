@@ -2,31 +2,43 @@
 
 All agents call the model through `structured_call`, which:
   1. asks the model for a Pydantic-typed answer (tool calling under the hood),
-  2. retries transient errors / HTTP 429 rate limits with backoff (Groq client
+  2. if that model returns malformed structured output, retries the SAME model in
+     JSON mode with the schema in the prompt (some models fail tool calling on nested
+     schemas, e.g. Qwen on the Analyst's output - an acceptance-test finding),
+  3. retries transient errors / HTTP 429 rate limits with backoff (Groq client
      honours the Retry-After header),
-  3. falls back from the main model to the fast model if the main one keeps failing,
-  4. raises `LLMUnavailableError` so callers can degrade gracefully instead of crashing.
+  4. falls back from the main model to the fast model, then to any
+     GROQ_FALLBACK_MODELS (each model has its own daily quota),
+  5. raises `LLMUnavailableError` listing every model's failure, so callers can
+     degrade gracefully and the reason is visible in the trace.
 """
 
 from __future__ import annotations
 
+import json
 from functools import lru_cache
 from typing import TypeVar
 
+from groq import BadRequestError
+from langchain_core.exceptions import OutputParserException
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_groq import ChatGroq
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from assistant.config import settings
 
 T = TypeVar("T", bound=BaseModel)
+
+# Errors that mean "this model produced unusable structured output" (worth a JSON-mode
+# retry on the same model), as opposed to rate limits / outages (move to the next model).
+_MALFORMED = (BadRequestError, OutputParserException, ValidationError)
 
 
 class LLMUnavailableError(RuntimeError):
     """Raised when every configured model failed (no key, outage, rate limit exhausted)."""
 
 
-@lru_cache(maxsize=4)
+@lru_cache(maxsize=8)
 def _chat_model(model_name: str) -> ChatGroq:
     """Create (and cache) one ChatGroq client per model name."""
     if not settings.groq_api_key:
@@ -40,6 +52,12 @@ def _chat_model(model_name: str) -> ChatGroq:
         max_retries=settings.llm_max_retries,  # exponential backoff, respects Retry-After on 429
         timeout=settings.llm_timeout_s,
     )
+
+
+def _model_order(tier: str) -> list[str]:
+    """Models to try, in order, for an agent of the given tier."""
+    order = [settings.main_model, settings.fast_model] if tier == "main" else [settings.fast_model, settings.main_model]
+    return order + [m for m in settings.fallback_models if m not in order]
 
 
 def structured_call(
@@ -56,28 +74,40 @@ def structured_call(
         schema: Pydantic model describing the expected output.
         system_prompt: role + rules for the agent.
         user_prompt: the task input (question, evidence, ...).
-        tier: "main" (strong model, fast model as fallback) or "fast" (fast model only,
-            then main as fallback). Lets cheap agents save the main model's token budget.
+        tier: "main" (strong model first) or "fast" (fast model first). Lets cheap
+            agents save the main model's token budget.
         run_name: label shown in LangSmith for this LLM call.
     """
-    order = (
-        [settings.main_model, settings.fast_model]
-        if tier == "main"
-        else [settings.fast_model, settings.main_model]
-    )
-    # Raises LLMUnavailableError right away when no API key is configured.
-    primary, *fallbacks = [_chat_model(m).with_structured_output(schema) for m in order]
-    runnable = primary.with_fallbacks(fallbacks) if fallbacks else primary
-
+    name = run_name or schema.__name__
     messages = [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)]
-    try:
-        result = runnable.invoke(messages, config={"run_name": run_name or schema.__name__})
-    except Exception as exc:  # provider down, quota exhausted, malformed tool call on all models
-        raise LLMUnavailableError(f"All models failed: {type(exc).__name__}: {exc}") from exc
+    # Same instructions plus the exact JSON schema, for the JSON-mode retry.
+    json_messages = [
+        SystemMessage(content=f"{system_prompt}\n\nRespond ONLY with one JSON object that matches this "
+                              f"JSON schema:\n{json.dumps(schema.model_json_schema())}"),
+        HumanMessage(content=user_prompt),
+    ]
 
-    if result is None:  # model replied without calling the output tool
-        raise LLMUnavailableError("Model returned no structured output.")
-    return result
+    failures: list[str] = []
+    for model_name in _model_order(tier):
+        llm = _chat_model(model_name)  # raises LLMUnavailableError when no API key is configured
+        attempts = [
+            ("tools", llm.with_structured_output(schema), messages),
+            ("json", llm.with_structured_output(schema, method="json_mode"), json_messages),
+        ]
+        for mode, runnable, msgs in attempts:
+            try:
+                result = runnable.invoke(msgs, config={"run_name": f"{name} [{model_name}, {mode}]"})
+            except _MALFORMED as exc:
+                failures.append(f"{model_name}/{mode}: malformed output ({type(exc).__name__})")
+                continue  # same model, JSON mode
+            except Exception as exc:  # rate limit, outage, timeout -> next model
+                failures.append(f"{model_name}/{mode}: {type(exc).__name__}: {str(exc)[:160]}")
+                break
+            if result is not None:
+                return result
+            failures.append(f"{model_name}/{mode}: no structured output")
+
+    raise LLMUnavailableError("All models failed: " + " | ".join(failures))
 
 
 def llm_available() -> bool:

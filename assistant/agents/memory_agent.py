@@ -12,15 +12,16 @@ from typing import Literal
 
 import numpy as np
 from langchain_core.runnables import RunnableConfig
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 from assistant.agents import prompts
 from assistant.agents.context import format_history, format_memories, user_store
+from assistant.agents.intent import memory_intent
 from assistant.agents.state import TurnState
 from assistant.config import settings
 from assistant.knowledge.retriever import get_retriever
 from assistant.llm import LLMUnavailableError, structured_call
-from assistant.memory.store import MemoryRejected
+from assistant.memory.store import MemoryRejected, UserStore
 
 
 # --------------------------------------------------------------------------- schemas
@@ -32,6 +33,19 @@ class MemoryOp(BaseModel):
     content: str | None = Field(default=None, description="New memory text for add/correct.")
     memory_id: str | None = Field(default=None, description="Target memory id for correct/forget.")
     reason: str = Field(description="One short sentence: why this operation.")
+
+    @model_validator(mode="after")
+    def _complete(self) -> "MemoryOp":
+        """Reject half-filled operations so the LLM call is retried instead of silently doing nothing.
+
+        Acceptance-test finding: a model returned `correct` without the new text, so the
+        user's correction was lost.
+        """
+        if self.action in ("add", "correct") and not (self.content or "").strip():
+            raise ValueError(f"'{self.action}' needs the memory text in 'content'")
+        if self.action in ("correct", "forget") and not self.memory_id:
+            raise ValueError(f"'{self.action}' needs the target 'memory_id'")
+        return self
 
 
 class MemoryDecision(BaseModel):
@@ -81,8 +95,7 @@ def update_memories(state: TurnState, config: RunnableConfig) -> dict:
             MemoryDecision, prompts.MEMORY_AGENT, prompt, tier="fast", run_name="MemoryAgent.decide"
         )
     except LLMUnavailableError as exc:
-        # Memory is best-effort: a provider failure must not block answering the question.
-        return {"memory_ops": [], "trace": [f"MemoryAgent.update: skipped (LLM unavailable: {exc})"]}
+        return _offline_update(state, store, exc)
 
     known_ids = {m["id"] for m in state.get("memories", [])} | {m.id for m in store.list_memories()}
     applied: list[dict] = []
@@ -121,4 +134,26 @@ def update_memories(state: TurnState, config: RunnableConfig) -> dict:
         "memory_ops": applied,
         "memory_list_requested": decision.list_requested,
         "trace": [f"MemoryAgent.update: {summary}"],
+    }
+
+
+def _offline_update(state: TurnState, store: UserStore, exc: Exception) -> dict:
+    """No LLM: keep viewing and erasing memory dependable, never guess anything else.
+
+    Viewing ("what do you remember about me?") and "forget everything" are unambiguous,
+    so they still work. Other memory requests change nothing and say so; silently
+    ignoring them, or guessing which memory was meant, would be worse.
+    """
+    intent = memory_intent(state["message"])
+    ops: list[dict] = []
+    if intent == "forget_all":
+        n = store.forget_all()
+        ops.append({"action": "forget_all", "status": "applied", "detail": f"{n} memories deleted"})
+    elif intent == "command":
+        ops.append({"action": "unavailable", "status": "rejected",
+                    "detail": "the language model is unavailable, so nothing was changed"})
+    return {
+        "memory_ops": ops,
+        "memory_list_requested": intent == "list",
+        "trace": [f"MemoryAgent.update: LLM unavailable ({exc}); rule-based intent={intent}"],
     }

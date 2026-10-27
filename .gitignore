@@ -21,3 +21,6 @@ eval/results/**/eval.db
 
 # Local tool config
 .claude/
+
+# Acceptance walkthrough scratch databases
+eval/results/*.db

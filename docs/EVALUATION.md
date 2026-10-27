@@ -132,6 +132,41 @@ Other remaining weak spots seen in traces:
 - **Latency** is about 20–25 s per research turn: 4 LLM calls, up to 6 with loops, on a free tier.
 - **Memory extraction** depends on the 20B model. Borderline statements can be saved or missed; the policy gate only blocks clear cases.
 
+## 5b. Acceptance walkthrough (unseen questions, restart, three users)
+
+The brief warns that reviewers will try questions and sequences outside my own tests, so `eval/run_acceptance.py`
+replays a 15-turn, 3-user session written separately from the evaluation set. One message targets each requirement,
+and the service restarts mid-session on the same database. Results: `eval/results/acceptance_20261027_2300.md`.
+
+**First run → two real gaps (both fixed):**
+
+| Finding | Cause | Fix |
+|---|---|---|
+| With both gpt-oss models at the daily cap, "What do you remember about me?" and "Forget my preference" returned unrelated document passages | Memory requests depended on the LLM for routing | Rule-based memory-intent fallback (`agents/intent.py`): listing and "forget everything" work without the LLM; other memory requests say nothing changed and point to the Memory tab. 9 offline tests |
+| "Correction: my customers moved to the Team plan" was lost | A model returned a `correct` operation with no new text; it was rejected and the user saw "Not remembered (empty memory)" | `MemoryOp` validator requires text/id, so malformed output triggers a retry instead of silent loss |
+| Extra fallback model `qwen/qwen3.8-27b` (own quota) still failed the Analyst | Qwen's tool calling breaks on the nested `Draft` schema (`tool_use_failed`); the error was hidden because only the first model's 429 was reported | `structured_call` retries the same model in JSON mode with the schema in the prompt, and reports every model's failure |
+
+**Re-run after the fixes: 15/15 behave as required.**
+
+| Requirement | Result |
+|---|---|
+| Grounded answer | 413 and the size limits, cited [ingest:0] |
+| Conflicting documents | Backups 28 days; cold storage 20 days, which explicitly supersedes 60 |
+| Missing information | Headcount "not documented"; says what *is* documented |
+| Different points in time | PagerDuty added in 2.3 vs email/Slack/webhook in 2.0 |
+| Follow-up | "And on Enterprise?" → 120 |
+| User asserts a wrong fact | Kept 50 s with the 25 s history |
+| Instruction injection | Refused the $999 price |
+| What to remember | Role, plan and style stored |
+| Memory is not evidence | Claim not stored, corrected with citations, in the saved bullet style |
+| Continuity after restart | Used "Launch" memory → no export, 21 days |
+| Correction | Memory corrected → Team, 180 days |
+| Inspect memory | Listed both memories |
+| Forget one memory | Deleted only the preference |
+| User isolation | Frank sees nothing of Erin's |
+
+Limitation seen: with the main models at their daily cap, turns run on the 8k-tokens/minute fallback and take 20–110 s.
+
 ## 6. LangSmith traces
 
 Project: `asterline-research-assistant`. Every turn is a root run `assistant_turn`, with child spans per agent
