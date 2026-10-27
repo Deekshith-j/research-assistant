@@ -1,0 +1,23 @@
+# Secrets
+.env
+
+# Local runtime data (vector index, user memories, conversations)
+storage/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Evaluation scratch databases
+eval/results/**/eval.db
+
+# Local tool config
+.claude/

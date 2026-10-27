@@ -1,0 +1,1449 @@
+{
+  "n_cases": 26,
+  "modes": {
+    "vector": {
+      "summary": {
+        "recall@4": 0.885,
+        "recall@8": 0.962,
+        "all_gold@4": 0.846,
+        "all_gold@8": 0.962,
+        "mrr": 0.891
+      },
+      "cases": [
+        {
+          "id": "R01",
+          "category": "lookup",
+          "top": [
+            "pricing:0",
+            "pricing:1",
+            "oncall:0",
+            "handbook:1",
+            "sla:0",
+            "company:2",
+            "handbook:0",
+            "pricing:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R02",
+          "category": "lookup",
+          "top": [
+            "pricing:1",
+            "security:1",
+            "retention:0",
+            "traces:1",
+            "pricing:2",
+            "release-22:1",
+            "retention:2",
+            "pricing:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R03",
+          "category": "lookup",
+          "top": [
+            "ingest:1",
+            "ingest:0",
+            "query:1",
+            "release-21:0",
+            "onboarding:0",
+            "architecture:0",
+            "release-20:0",
+            "ingest:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R04",
+          "category": "lookup",
+          "top": [
+            "ingest:0",
+            "ingest:1",
+            "query:1",
+            "oncall:1",
+            "release-20:2",
+            "sdk:1",
+            "alerts:1",
+            "ingest:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R05",
+          "category": "lookup",
+          "top": [
+            "alerts:0",
+            "onboarding:1",
+            "incident-03:2",
+            "alerts:1",
+            "alerts:2",
+            "release-22:1",
+            "traces:1",
+            "incident-03:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R06",
+          "category": "lookup",
+          "top": [
+            "traces:1",
+            "release-22:1",
+            "traces:0",
+            "retention:2",
+            "onboarding:2",
+            "traces:2",
+            "faq:0",
+            "pricing:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R07",
+          "category": "lookup",
+          "top": [
+            "query:1",
+            "ingest:1",
+            "pricing:1",
+            "pricing:2",
+            "release-20:2",
+            "traces:1",
+            "release-22:2",
+            "company:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R08",
+          "category": "multi-hop",
+          "top": [
+            "sla:0",
+            "sla:2",
+            "sla:1",
+            "pricing:1",
+            "oncall:1",
+            "pricing:0",
+            "release-23:2",
+            "onboarding:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R09",
+          "category": "multi-hop",
+          "top": [
+            "export:0",
+            "export:2",
+            "incident-12:0",
+            "onboarding:1",
+            "export:1",
+            "pricing:2",
+            "release-22:0",
+            "regions:0"
+          ],
+          "recall@4": 0.5,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R10",
+          "category": "multi-hop",
+          "top": [
+            "onboarding:2",
+            "regions:1",
+            "regions:2",
+            "regions:0",
+            "export:0",
+            "incident-12:2",
+            "faq:1",
+            "release-21:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R11",
+          "category": "incident",
+          "top": [
+            "incident-03:0",
+            "incident-12:0",
+            "incident-08:0",
+            "incident-08:1",
+            "release-23:1",
+            "incident-03:2",
+            "release-20:1",
+            "incident-12:2"
+          ],
+          "recall@4": 0.0,
+          "recall@8": 0.0,
+          "rr": 0.0,
+          "missed@8": [
+            "incident-12:1",
+            "release-21:1"
+          ]
+        },
+        {
+          "id": "R12",
+          "category": "incident",
+          "top": [
+            "incident-12:2",
+            "release-22:0",
+            "release-20:2",
+            "incident-12:0",
+            "incident-03:0",
+            "release-23:1",
+            "incident-08:1",
+            "release-20:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R13",
+          "category": "incident",
+          "top": [
+            "incident-08:0",
+            "incident-03:0",
+            "incident-03:2",
+            "incident-08:1",
+            "incident-12:0",
+            "release-23:1",
+            "incident-08:2",
+            "handbook:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R14",
+          "category": "incident",
+          "top": [
+            "release-21:2",
+            "release-21:1",
+            "incident-12:2",
+            "incident-12:0",
+            "incident-12:1",
+            "release-22:0",
+            "deploy:2",
+            "export:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R15",
+          "category": "incident",
+          "top": [
+            "release-23:2",
+            "release-23:1",
+            "incident-03:1",
+            "alerts:2",
+            "release-20:1",
+            "incident-03:0",
+            "sla:2",
+            "incident-03:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R16",
+          "category": "conflict",
+          "top": [
+            "handbook:1",
+            "oncall:0",
+            "faq:1",
+            "release-23:2",
+            "incident-03:0",
+            "sla:0",
+            "sla:2",
+            "company:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R17",
+          "category": "conflict",
+          "top": [
+            "security:1",
+            "retention:0",
+            "retention:1",
+            "retention:2",
+            "traces:1",
+            "ingest:2",
+            "architecture:1",
+            "pricing:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R18",
+          "category": "temporal",
+          "top": [
+            "query:0",
+            "release-20:2",
+            "release-23:0",
+            "release-22:2",
+            "query:2",
+            "query:1",
+            "architecture:1",
+            "incident-08:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R19",
+          "category": "temporal",
+          "top": [
+            "alerts:1",
+            "release-23:0",
+            "release-20:2",
+            "incident-03:1",
+            "release-21:0",
+            "release-20:0",
+            "oncall:1",
+            "release-22:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R20",
+          "category": "temporal",
+          "top": [
+            "ingest:1",
+            "release-20:0",
+            "release-21:0",
+            "ingest:0",
+            "architecture:0",
+            "incident-08:1",
+            "query:1",
+            "incident-08:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R21",
+          "category": "false-premise",
+          "top": [
+            "sla:2",
+            "sla:0",
+            "pricing:2",
+            "oncall:0",
+            "release-23:2",
+            "deploy:1",
+            "incident-03:1",
+            "pricing:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R22",
+          "category": "false-premise",
+          "top": [
+            "traces:0",
+            "traces:1",
+            "release-22:1",
+            "faq:0",
+            "traces:2",
+            "onboarding:2",
+            "retention:2",
+            "ingest:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R23",
+          "category": "false-premise",
+          "top": [
+            "pricing:2",
+            "security:0",
+            "regions:2",
+            "onboarding:0",
+            "regions:0",
+            "traces:0",
+            "sla:1",
+            "sla:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R24",
+          "category": "unanswerable",
+          "top": [
+            "faq:1",
+            "regions:2",
+            "release-22:2",
+            "regions:1",
+            "pricing:2",
+            "release-21:0",
+            "regions:0",
+            "release-20:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R25",
+          "category": "unanswerable",
+          "top": [
+            "pricing:0",
+            "pricing:1",
+            "oncall:0",
+            "sla:0",
+            "handbook:1",
+            "pricing:2",
+            "company:2",
+            "faq:1"
+          ],
+          "recall@4": 0.5,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R26",
+          "category": "unanswerable",
+          "top": [
+            "company:0",
+            "security:0",
+            "faq:0",
+            "retention:2",
+            "regions:0",
+            "security:2",
+            "export:2",
+            "pricing:2"
+          ],
+          "recall@4": 0.0,
+          "recall@8": 1.0,
+          "rr": 0.16666666666666666,
+          "missed@8": []
+        }
+      ]
+    },
+    "bm25": {
+      "summary": {
+        "recall@4": 0.904,
+        "recall@8": 0.942,
+        "all_gold@4": 0.846,
+        "all_gold@8": 0.923,
+        "mrr": 0.885
+      },
+      "cases": [
+        {
+          "id": "R01",
+          "category": "lookup",
+          "top": [
+            "pricing:1",
+            "pricing:0",
+            "release-21:0",
+            "alerts:1",
+            "faq:0",
+            "release-20:0",
+            "query:2",
+            "deploy:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R02",
+          "category": "lookup",
+          "top": [
+            "pricing:1",
+            "faq:0",
+            "retention:0",
+            "onboarding:2",
+            "ingest:2",
+            "security:1",
+            "onboarding:0",
+            "pricing:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R03",
+          "category": "lookup",
+          "top": [
+            "ingest:1",
+            "onboarding:0",
+            "query:1",
+            "deploy:1",
+            "release-21:0",
+            "ingest:0",
+            "release-20:0",
+            "release-23:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R04",
+          "category": "lookup",
+          "top": [
+            "ingest:0",
+            "company:0",
+            "sla:2",
+            "ingest:1",
+            "query:0",
+            "query:2",
+            "handbook:2",
+            "release-20:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R05",
+          "category": "lookup",
+          "top": [
+            "alerts:0",
+            "incident-03:2",
+            "onboarding:1",
+            "release-21:0",
+            "alerts:1",
+            "faq:0",
+            "sla:2",
+            "release-23:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R06",
+          "category": "lookup",
+          "top": [
+            "traces:1",
+            "traces:0",
+            "retention:2",
+            "release-22:1",
+            "onboarding:2",
+            "traces:2",
+            "release-20:0",
+            "retention:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R07",
+          "category": "lookup",
+          "top": [
+            "query:1",
+            "release-23:0",
+            "release-21:0",
+            "alerts:1",
+            "query:2",
+            "sdk:1",
+            "release-20:0",
+            "onboarding:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R08",
+          "category": "multi-hop",
+          "top": [
+            "sla:0",
+            "sla:2",
+            "pricing:0",
+            "incident-12:2",
+            "oncall:1",
+            "pricing:1",
+            "onboarding:1",
+            "sla:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R09",
+          "category": "multi-hop",
+          "top": [
+            "export:0",
+            "onboarding:1",
+            "export:2",
+            "release-22:0",
+            "pricing:2",
+            "retention:2",
+            "export:1",
+            "incident-12:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R10",
+          "category": "multi-hop",
+          "top": [
+            "regions:1",
+            "onboarding:2",
+            "regions:0",
+            "regions:2",
+            "sla:2",
+            "release-22:2",
+            "onboarding:0",
+            "faq:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R11",
+          "category": "incident",
+          "top": [
+            "incident-12:0",
+            "incident-12:1",
+            "release-21:1",
+            "release-21:2",
+            "incident-12:2",
+            "export:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R12",
+          "category": "incident",
+          "top": [
+            "incident-12:2",
+            "incident-12:0",
+            "release-21:2",
+            "release-20:2",
+            "incident-03:0",
+            "sla:2",
+            "export:0",
+            "release-22:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R13",
+          "category": "incident",
+          "top": [
+            "incident-08:0",
+            "release-21:2",
+            "incident-12:0",
+            "incident-08:1",
+            "release-22:1",
+            "release-20:0",
+            "security:1",
+            "handbook:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R14",
+          "category": "incident",
+          "top": [
+            "release-21:2",
+            "deploy:2",
+            "incident-12:1",
+            "release-21:1",
+            "incident-12:0",
+            "export:1",
+            "incident-12:2",
+            "export:2"
+          ],
+          "recall@4": 0.5,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R15",
+          "category": "incident",
+          "top": [
+            "release-23:2",
+            "sla:2",
+            "alerts:2",
+            "incident-03:1",
+            "incident-03:0",
+            "incident-12:2",
+            "release-23:1",
+            "retention:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R16",
+          "category": "conflict",
+          "top": [
+            "handbook:1",
+            "oncall:0",
+            "oncall:2",
+            "oncall:1",
+            "incident-03:2",
+            "export:1",
+            "sdk:1",
+            "architecture:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R17",
+          "category": "conflict",
+          "top": [
+            "retention:0",
+            "security:1",
+            "retention:1",
+            "retention:2",
+            "onboarding:2",
+            "architecture:0",
+            "traces:1",
+            "alerts:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R18",
+          "category": "temporal",
+          "top": [
+            "query:0",
+            "release-23:0",
+            "release-20:2",
+            "release-22:2",
+            "query:2",
+            "query:1",
+            "architecture:1",
+            "retention:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R19",
+          "category": "temporal",
+          "top": [
+            "release-20:2",
+            "release-23:0",
+            "alerts:1",
+            "export:1",
+            "release-20:0",
+            "regions:0",
+            "release-20:1",
+            "regions:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R20",
+          "category": "temporal",
+          "top": [
+            "release-20:0",
+            "ingest:1",
+            "release-21:0",
+            "release-20:1",
+            "release-20:2",
+            "onboarding:0",
+            "query:1",
+            "incident-08:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R21",
+          "category": "false-premise",
+          "top": [
+            "sla:2",
+            "sla:0",
+            "release-23:2",
+            "onboarding:0",
+            "onboarding:1",
+            "release-21:0",
+            "release-22:1",
+            "release-22:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R22",
+          "category": "false-premise",
+          "top": [
+            "traces:0",
+            "faq:0",
+            "traces:2",
+            "export:1",
+            "onboarding:2",
+            "release-22:1",
+            "pricing:2",
+            "onboarding:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R23",
+          "category": "false-premise",
+          "top": [
+            "pricing:2",
+            "security:0",
+            "pricing:0",
+            "regions:2",
+            "pricing:1",
+            "release-20:0",
+            "security:1",
+            "traces:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R24",
+          "category": "unanswerable",
+          "top": [
+            "release-22:2",
+            "regions:2",
+            "regions:1",
+            "regions:0",
+            "faq:1",
+            "ingest:1",
+            "faq:2",
+            "sdk:1"
+          ],
+          "recall@4": 0.5,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R25",
+          "category": "unanswerable",
+          "top": [
+            "pricing:0",
+            "onboarding:1",
+            "release-23:2",
+            "onboarding:0",
+            "traces:0",
+            "oncall:0",
+            "handbook:0",
+            "release-23:1"
+          ],
+          "recall@4": 0.5,
+          "recall@8": 0.5,
+          "rr": 1.0,
+          "missed@8": [
+            "faq:1"
+          ]
+        },
+        {
+          "id": "R26",
+          "category": "unanswerable",
+          "top": [
+            "company:0",
+            "security:0",
+            "faq:0",
+            "regions:0",
+            "export:2",
+            "traces:1",
+            "oncall:1",
+            "traces:0"
+          ],
+          "recall@4": 0.0,
+          "recall@8": 0.0,
+          "rr": 0.0,
+          "missed@8": [
+            "security:2"
+          ]
+        }
+      ]
+    },
+    "hybrid": {
+      "summary": {
+        "recall@4": 0.885,
+        "recall@8": 0.981,
+        "all_gold@4": 0.846,
+        "all_gold@8": 0.962,
+        "mrr": 0.879
+      },
+      "cases": [
+        {
+          "id": "R01",
+          "category": "lookup",
+          "top": [
+            "pricing:0",
+            "pricing:1",
+            "company:2",
+            "alerts:1",
+            "oncall:0",
+            "release-21:0",
+            "pricing:2",
+            "sla:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R02",
+          "category": "lookup",
+          "top": [
+            "pricing:1",
+            "retention:0",
+            "security:1",
+            "ingest:2",
+            "onboarding:2",
+            "pricing:2",
+            "pricing:0",
+            "traces:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R03",
+          "category": "lookup",
+          "top": [
+            "ingest:1",
+            "query:1",
+            "onboarding:0",
+            "ingest:0",
+            "release-21:0",
+            "release-20:0",
+            "architecture:0",
+            "incident-08:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R04",
+          "category": "lookup",
+          "top": [
+            "ingest:0",
+            "ingest:1",
+            "query:0",
+            "release-22:1",
+            "sdk:1",
+            "ingest:2",
+            "architecture:1",
+            "release-20:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R05",
+          "category": "lookup",
+          "top": [
+            "alerts:0",
+            "onboarding:1",
+            "incident-03:2",
+            "alerts:1",
+            "alerts:2",
+            "incident-03:0",
+            "release-21:0",
+            "faq:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R06",
+          "category": "lookup",
+          "top": [
+            "traces:1",
+            "traces:0",
+            "release-22:1",
+            "retention:2",
+            "onboarding:2",
+            "traces:2",
+            "faq:0",
+            "release-20:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R07",
+          "category": "lookup",
+          "top": [
+            "query:1",
+            "ingest:1",
+            "release-23:0",
+            "alerts:1",
+            "pricing:1",
+            "pricing:2",
+            "query:2",
+            "sdk:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R08",
+          "category": "multi-hop",
+          "top": [
+            "sla:0",
+            "sla:2",
+            "pricing:0",
+            "pricing:1",
+            "oncall:1",
+            "sla:1",
+            "onboarding:1",
+            "release-23:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R09",
+          "category": "multi-hop",
+          "top": [
+            "export:0",
+            "export:2",
+            "onboarding:1",
+            "release-22:0",
+            "pricing:2",
+            "incident-12:0",
+            "export:1",
+            "retention:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R10",
+          "category": "multi-hop",
+          "top": [
+            "onboarding:2",
+            "regions:1",
+            "regions:2",
+            "regions:0",
+            "faq:1",
+            "release-22:2",
+            "onboarding:0",
+            "pricing:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R11",
+          "category": "incident",
+          "top": [
+            "incident-12:0",
+            "incident-12:2",
+            "release-21:2",
+            "incident-03:0",
+            "incident-12:1",
+            "incident-08:0",
+            "release-21:1",
+            "incident-08:1"
+          ],
+          "recall@4": 0.0,
+          "recall@8": 1.0,
+          "rr": 0.2,
+          "missed@8": []
+        },
+        {
+          "id": "R12",
+          "category": "incident",
+          "top": [
+            "incident-12:2",
+            "incident-12:0",
+            "release-20:2",
+            "release-22:0",
+            "incident-03:0",
+            "release-23:1",
+            "release-23:0",
+            "release-21:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R13",
+          "category": "incident",
+          "top": [
+            "incident-08:0",
+            "incident-12:0",
+            "incident-08:1",
+            "handbook:1",
+            "release-21:2",
+            "incident-08:2",
+            "incident-03:2",
+            "release-20:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R14",
+          "category": "incident",
+          "top": [
+            "release-21:2",
+            "release-21:1",
+            "incident-12:1",
+            "deploy:2",
+            "incident-12:0",
+            "incident-12:2",
+            "export:1",
+            "export:2"
+          ],
+          "recall@4": 0.5,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R15",
+          "category": "incident",
+          "top": [
+            "release-23:2",
+            "incident-03:1",
+            "alerts:2",
+            "release-23:1",
+            "sla:2",
+            "incident-03:0",
+            "incident-12:2",
+            "release-20:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R16",
+          "category": "conflict",
+          "top": [
+            "handbook:1",
+            "oncall:0",
+            "oncall:2",
+            "sla:2",
+            "company:0",
+            "incident-03:2",
+            "handbook:2",
+            "release-23:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R17",
+          "category": "conflict",
+          "top": [
+            "security:1",
+            "retention:0",
+            "retention:1",
+            "retention:2",
+            "traces:1",
+            "ingest:2",
+            "onboarding:2",
+            "architecture:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R18",
+          "category": "temporal",
+          "top": [
+            "query:0",
+            "release-20:2",
+            "release-23:0",
+            "release-22:2",
+            "query:2",
+            "query:1",
+            "architecture:1",
+            "retention:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R19",
+          "category": "temporal",
+          "top": [
+            "alerts:1",
+            "release-20:2",
+            "release-23:0",
+            "release-20:0",
+            "release-22:1",
+            "release-20:1",
+            "release-22:2",
+            "alerts:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R20",
+          "category": "temporal",
+          "top": [
+            "ingest:1",
+            "release-20:0",
+            "release-21:0",
+            "query:1",
+            "ingest:0",
+            "release-20:2",
+            "incident-08:2",
+            "release-20:1"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R21",
+          "category": "false-premise",
+          "top": [
+            "sla:2",
+            "sla:0",
+            "release-23:2",
+            "release-21:0",
+            "onboarding:1",
+            "pricing:1",
+            "incident-03:2",
+            "regions:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R22",
+          "category": "false-premise",
+          "top": [
+            "traces:0",
+            "faq:0",
+            "traces:2",
+            "release-22:1",
+            "onboarding:2",
+            "traces:1",
+            "retention:2",
+            "alerts:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R23",
+          "category": "false-premise",
+          "top": [
+            "pricing:2",
+            "security:0",
+            "regions:2",
+            "traces:0",
+            "regions:0",
+            "pricing:1",
+            "sla:1",
+            "sla:2"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 1.0,
+          "missed@8": []
+        },
+        {
+          "id": "R24",
+          "category": "unanswerable",
+          "top": [
+            "release-22:2",
+            "regions:2",
+            "faq:1",
+            "regions:1",
+            "regions:0",
+            "pricing:2",
+            "release-20:0",
+            "onboarding:0"
+          ],
+          "recall@4": 1.0,
+          "recall@8": 1.0,
+          "rr": 0.5,
+          "missed@8": []
+        },
+        {
+          "id": "R25",
+          "category": "unanswerable",
+          "top": [
+            "pricing:0",
+            "oncall:0",
+            "release-23:2",
+            "pricing:2",
+            "release-21:0",
+            "handbook:1",
+            "handbook:0",
+            "ingest:1"
+          ],
+          "recall@4": 0.5,
+          "recall@8": 0.5,
+          "rr": 1.0,
+          "missed@8": [
+            "faq:1"
+          ]
+        },
+        {
+          "id": "R26",
+          "category": "unanswerable",
+          "top": [
+            "company:0",
+            "security:0",
+            "faq:0",
+            "regions:0",
+            "export:2",
+            "retention:2",
+            "security:2",
+            "pricing:2"
+          ],
+          "recall@4": 0.0,
+          "recall@8": 1.0,
+          "rr": 0.14285714285714285,
+          "missed@8": []
+        }
+      ]
+    }
+  }
+}

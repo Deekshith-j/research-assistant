@@ -1,0 +1,170 @@
+{
+  "research": [
+    {
+      "id": "R01",
+      "category": "lookup",
+      "question": "How much does the Team plan cost per month and how many seats does it include?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "pricing:0"
+      ],
+      "evidence": [
+        "pricing:1",
+        "pricing:0",
+        "release-23:2",
+        "pricing:2",
+        "release-21:0",
+        "onboarding:1",
+        "handbook:0",
+        "incident-12:0",
+        "release-21:1",
+        "release-21:2",
+        "release-23:0",
+        "release-23:1"
+      ],
+      "latency_s": 8.62,
+      "analyst_passes": 1,
+      "answer": "The Team plan is priced at **$449 per month** and includes **20 seats**.\n\n[pricing:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the monthly cost of the Team plan and how many seats does it include?' | queries=['What is the monthly cost of the Team plan and how many seats does it include?', 'Asterline Team plan monthly cost', 'Team plan seat count', 'Team plan pricing 2026'] | why: User asks for pricing and seat count of Team plan, which is a product detail question. Route to research.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the monthly cost of the Team plan and how many seats does it include?', 'Asterline Team plan monthly cost', 'Team plan seat count', 'Team plan pricing 2026'] -> ['pricing:1', 'pricing:0', 'release-23:2', 'pricing:2', 'release-21:0', 'onboarding:1', 'handbook:0', 'incident-12:0', 'release-21:1', 'release-21:2', 'release-23:0', 'release-23:1'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['pricing:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['pricing:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R16",
+      "category": "conflict",
+      "question": "What is the weekly on-call stipend?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "handbook:1"
+      ],
+      "evidence": [
+        "handbook:1",
+        "oncall:0",
+        "company:0",
+        "faq:0",
+        "oncall:2",
+        "regions:0",
+        "security:0",
+        "oncall:1",
+        "company:1",
+        "company:2",
+        "handbook:0",
+        "handbook:2"
+      ],
+      "latency_s": 50.04,
+      "analyst_passes": 1,
+      "answer": "The current weekly on\u2011call stipend is **$175** per week. This figure was updated in the Employee Handbook effective\u202f2026\u201101\u201101, replacing the earlier $140 stipend listed in the older on\u2011call runbook. [handbook:1]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the weekly on-call stipend?' | queries=['What is the weekly on-call stipend?', 'Asterline weekly on-call stipend', 'Asterline on-call stipend policy', 'Asterline on-call stipend changes 2024'] | why: The user is asking about a specific policy detail \u2013 the weekly on-call stipend \u2013 which is a question about Asterline policies. This falls under the research route. We need to generate search queries to locate the relevant policy documents or release notes. The standalone question is simply the user's query rewritten without context.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the weekly on-call stipend?', 'Asterline weekly on-call stipend', 'Asterline on-call stipend policy', 'Asterline on-call stipend changes 2024'] -> ['handbook:1', 'oncall:0', 'company:0', 'faq:0', 'oncall:2', 'regions:0', 'security:0', 'oncall:1', 'company:1', 'company:2', 'handbook:0', 'handbook:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['handbook:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['handbook:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R17",
+      "category": "conflict",
+      "question": "How long are raw run records kept in cold recovery storage after searchable retention ends?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "retention:0"
+      ],
+      "evidence": [
+        "retention:0",
+        "retention:2",
+        "retention:1",
+        "security:1",
+        "traces:1",
+        "onboarding:2",
+        "query:2",
+        "release-22:1",
+        "traces:0",
+        "traces:2",
+        "security:0",
+        "security:2"
+      ],
+      "latency_s": 3.67,
+      "analyst_passes": 1,
+      "answer": "Raw run records are kept in cold recovery storage for **20 days** after their plan\u2011specific searchable retention period ends. This policy supersedes the earlier 60\u2011day period that was documented in the 2025\u201103\u201115 security overview.\n\n**Claim**: Raw run records are held in cold recovery storage for 20 days after searchable retention ends.\n\n**Citation**: [retention:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='How long are raw run records kept in cold recovery storage after searchable retention ends?' | queries=['How long are raw run records kept in cold recovery storage after searchable retention ends?', 'Asterline raw run records cold recovery storage retention period', 'Asterline searchable retention policy', 'Asterline cold recovery storage duration after retention'] | why: The user asks about the retention period for raw run records in cold recovery storage after searchable retention ends, which is a policy question about Asterline. This falls under the research route. We need to generate search queries to find the relevant policy documents.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['How long are raw run records kept in cold recovery storage after searchable retention ends?', 'Asterline raw run records cold recovery storage retention period', 'Asterline searchable retention policy', 'Asterline cold recovery storage duration after retention'] -> ['retention:0', 'retention:2', 'retention:1', 'security:1', 'traces:1', 'onboarding:2', 'query:2', 'release-22:1', 'traces:0', 'traces:2', 'security:0', 'security:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['retention:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['retention:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R18",
+      "category": "temporal",
+      "question": "What is the AQL query timeout?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "release-23:0",
+        "query:0"
+      ],
+      "evidence": [
+        "query:0",
+        "release-20:2",
+        "release-23:0",
+        "release-22:2",
+        "query:2",
+        "query:1",
+        "architecture:1",
+        "retention:1",
+        "release-20:0",
+        "release-20:1",
+        "release-23:1",
+        "release-23:2"
+      ],
+      "latency_s": 32.52,
+      "analyst_passes": 1,
+      "answer": "The current AQL query timeout is **50\u202fseconds**. Earlier releases (e.g., 2.0 and 2.2) used a 25\u2011second timeout, but version\u202f2.3 increased it to 50\u202fseconds.\n\n[release-23:0] [query:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the AQL query timeout?' | queries=['What is the AQL query timeout?', 'AQL query timeout default value', 'AQL query timeout policy', 'AQL query timeout setting'] | why: User asks about AQL query timeout, which is a product policy detail. Route to research. Provide search queries to find the timeout value and related policy. Standalone question is same as user message.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the AQL query timeout?', 'AQL query timeout default value', 'AQL query timeout policy', 'AQL query timeout setting'] -> ['query:0', 'release-20:2', 'release-23:0', 'release-22:2', 'query:2', 'query:1', 'architecture:1', 'retention:1', 'release-20:0', 'release-20:1', 'release-23:1', 'release-23:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['query:0', 'release-20:2', 'release-23:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['release-23:0', 'query:0'], warnings=0"
+      ]
+    }
+  ],
+  "memory": []
+}

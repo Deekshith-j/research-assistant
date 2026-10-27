@@ -1,0 +1,1658 @@
+{
+  "research": [
+    {
+      "id": "R01",
+      "category": "lookup",
+      "question": "How much does the Team plan cost per month and how many seats does it include?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "pricing:0"
+      ],
+      "evidence": [
+        "pricing:1",
+        "pricing:0",
+        "release-23:2",
+        "pricing:2",
+        "release-21:0",
+        "onboarding:1",
+        "handbook:0",
+        "incident-12:0",
+        "release-21:1",
+        "release-21:2",
+        "release-23:0",
+        "release-23:1"
+      ],
+      "latency_s": 8.07,
+      "analyst_passes": 1,
+      "answer": "The Team plan is priced at **$449 per month** and comes with **20 seats** included in the base subscription.\u202f[pricing:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the monthly cost of the Team plan and how many seats does it include?' | queries=['What is the monthly cost of the Team plan and how many seats does it include?', 'Asterline Team plan monthly cost', 'Team plan seat count', 'Team plan pricing 2026'] | why: User asks for pricing and seat count of Team plan, which is a product detail question. Route to research.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the monthly cost of the Team plan and how many seats does it include?', 'Asterline Team plan monthly cost', 'Team plan seat count', 'Team plan pricing 2026'] -> ['pricing:1', 'pricing:0', 'release-23:2', 'pricing:2', 'release-21:0', 'onboarding:1', 'handbook:0', 'incident-12:0', 'release-21:1', 'release-21:2', 'release-23:0', 'release-23:1'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['pricing:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['pricing:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R02",
+      "category": "lookup",
+      "question": "How long does the Launch plan keep searchable run records?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "pricing:1"
+      ],
+      "evidence": [
+        "retention:0",
+        "onboarding:2",
+        "retention:1",
+        "security:1",
+        "retention:2",
+        "traces:1",
+        "pricing:1",
+        "ingest:2",
+        "security:0",
+        "security:2",
+        "onboarding:0",
+        "onboarding:1"
+      ],
+      "latency_s": 5.1,
+      "analyst_passes": 1,
+      "answer": "The Launch plan keeps searchable run records for **21 days**\u202f[pricing:1].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='In the Launch plan, how long are searchable run records retained?' | queries=['In the Launch plan, how long are searchable run records retained?', 'Launch plan searchable run records retention period', 'Asterline run record retention policy', 'Asterline searchable run records retention policy update', 'Asterline Launch plan run record retention policy'] | why: The user asks about retention of searchable run records in the Launch plan, which is a policy question about Asterline. This falls under the research route. We need to provide search queries to find the relevant policy documents and produce a standalone question.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['In the Launch plan, how long are searchable run records retained?', 'Launch plan searchable run records retention period', 'Asterline run record retention policy', 'Asterline searchable run records retention policy update', 'Asterline Launch plan run record retention policy'] -> ['retention:0', 'onboarding:2', 'retention:1', 'security:1', 'retention:2', 'traces:1', 'pricing:1', 'ingest:2', 'security:0', 'security:2', 'onboarding:0', 'onboarding:1'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['pricing:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['pricing:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R03",
+      "category": "lookup",
+      "question": "What is the per-project ingestion rate limit on the Team plan?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "ingest:1"
+      ],
+      "evidence": [
+        "ingest:1",
+        "release-21:0",
+        "query:1",
+        "onboarding:0",
+        "release-20:0",
+        "architecture:0",
+        "incident-08:1",
+        "ingest:0",
+        "ingest:2",
+        "query:0",
+        "query:2",
+        "release-21:1",
+        "release-21:2"
+      ],
+      "latency_s": 9.17,
+      "analyst_passes": 1,
+      "answer": "The per\u2011project ingestion rate limit for the Team plan is **1,500 requests per second** per project. [ingest:1]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the per-project ingestion rate limit on the Team plan?' | queries=['What is the per-project ingestion rate limit on the Team plan?', 'Team plan ingestion rate limit per project', 'Asterline ingestion limits Team plan', 'Team plan ingestion rate limit changes'] | why: The user is asking about a specific product detail: the per-project ingestion rate limit on the Team plan. This is a question about Asterline product limits, so it falls under the research route. We need to provide search queries to find the relevant policy or documentation. The standalone question is simply the user's question, as it is already clear and self-contained.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the per-project ingestion rate limit on the Team plan?', 'Team plan ingestion rate limit per project', 'Asterline ingestion limits Team plan', 'Team plan ingestion rate limit changes'] -> ['ingest:1', 'release-21:0', 'query:1', 'onboarding:0', 'release-20:0', 'architecture:0', 'incident-08:1', 'ingest:0', 'ingest:2', 'query:0', 'query:2', 'release-21:1', 'release-21:2'] (13 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['ingest:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['ingest:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R04",
+      "category": "lookup",
+      "question": "What is the maximum request size for POST /v2/runs?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "ingest:0"
+      ],
+      "evidence": [
+        "ingest:0",
+        "ingest:1",
+        "query:1",
+        "query:0",
+        "company:0",
+        "ingest:2",
+        "retention:2",
+        "architecture:1",
+        "company:1",
+        "company:2",
+        "query:2"
+      ],
+      "latency_s": 17.45,
+      "analyst_passes": 1,
+      "answer": "The POST\u202f/v2/runs endpoint will accept a request up to **1\u202fMB** in size (or up to **400 run records**, whichever limit is reached first). Requests larger than this are rejected with a 413 response.\n\n[ingest:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the maximum request size for the POST /v2/runs endpoint?' | queries=['What is the maximum request size for the POST /v2/runs endpoint?', 'POST /v2/runs maximum request size', 'Asterline API request size limit', 'v2/runs request size limit', 'Asterline API request size limit policy'] | why: The user is asking about a specific API endpoint's request size limit, which is a product detail. This falls under the research route.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the maximum request size for the POST /v2/runs endpoint?', 'POST /v2/runs maximum request size', 'Asterline API request size limit', 'v2/runs request size limit', 'Asterline API request size limit policy'] -> ['ingest:0', 'ingest:1', 'query:1', 'query:0', 'company:0', 'ingest:2', 'retention:2', 'architecture:1', 'company:1', 'company:2', 'query:2'] (11 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['ingest:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['ingest:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R05",
+      "category": "lookup",
+      "question": "How often do Signals evaluate, and how much history does seasonal anomaly detection need?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "alerts:0",
+        "onboarding:1"
+      ],
+      "evidence": [
+        "alerts:0",
+        "incident-03:2",
+        "onboarding:1",
+        "alerts:2",
+        "alerts:1",
+        "incident-03:0",
+        "incident-03:1",
+        "release-23:1",
+        "onboarding:0",
+        "onboarding:2"
+      ],
+      "latency_s": 18.57,
+      "analyst_passes": 1,
+      "answer": "Signals run their checks on workflow metrics **every\u202f4\u202fminutes**\u202f[alerts:0].\n\nFor the seasonal\u2011anomaly mode, a Signal needs **21\u202fcomplete days of historical data** before it can start producing alerts\u202f[alerts:0][onboarding:1].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='How often do Signals evaluate, and how much historical data is required for seasonal anomaly detection?' | queries=['How often do Signals evaluate, and how much historical data is required for seasonal anomaly detection?', 'Signals evaluation frequency', 'seasonal anomaly detection historical data requirement', 'Signals evaluation interval', 'seasonal anomaly detection data history length'] | why: The user is asking about product details regarding Signals evaluation frequency and the amount of historical data needed for seasonal anomaly detection. This is a question about Asterline product features, so it falls under the research route.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['How often do Signals evaluate, and how much historical data is required for seasonal anomaly detection?', 'Signals evaluation frequency', 'seasonal anomaly detection historical data requirement', 'Signals evaluation interval', 'seasonal anomaly detection data history length'] -> ['alerts:0', 'incident-03:2', 'onboarding:1', 'alerts:2', 'alerts:1', 'incident-03:0', 'incident-03:1', 'release-23:1', 'onboarding:0', 'onboarding:2'] (10 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['alerts:0', 'onboarding:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['alerts:0', 'onboarding:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R06",
+      "category": "lookup",
+      "question": "What is the Run Explorer timeline retention on Enterprise?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "traces:1",
+        "release-22:1"
+      ],
+      "evidence": [
+        "traces:1",
+        "retention:2",
+        "release-22:1",
+        "traces:0",
+        "onboarding:2",
+        "faq:0",
+        "traces:2",
+        "release-20:0",
+        "release-22:0",
+        "release-22:2",
+        "retention:0",
+        "retention:1"
+      ],
+      "latency_s": 15.4,
+      "analyst_passes": 1,
+      "answer": "The Run Explorer timeline is retained for **60\u202fdays** on the Enterprise plan.\n\n[traces:1] confirms that Explorer timeline retention is 60\u202fdays for Enterprise, and [release-22:1] reiterates that Enterprise timelines remain available for 60\u202fdays.",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the Run Explorer timeline retention period for the Enterprise plan?' | queries=['What is the Run Explorer timeline retention period for the Enterprise plan?', 'Run Explorer timeline retention Enterprise', 'Run Explorer retention policy Asterline Enterprise', 'Run Explorer timeline retention policy', 'Run Explorer retention Enterprise plan'] | why: The user is asking about a specific feature of Asterline's Enterprise plan, so this falls under research. We need to provide a clear standalone question and relevant search queries to find the answer.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the Run Explorer timeline retention period for the Enterprise plan?', 'Run Explorer timeline retention Enterprise', 'Run Explorer retention policy Asterline Enterprise', 'Run Explorer timeline retention policy', 'Run Explorer retention Enterprise plan'] -> ['traces:1', 'retention:2', 'release-22:1', 'traces:0', 'onboarding:2', 'faq:0', 'traces:2', 'release-20:0', 'release-22:0', 'release-22:2', 'retention:0', 'retention:1'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['release-22:1', 'traces:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['traces:1', 'release-22:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R07",
+      "category": "lookup",
+      "question": "What are the query concurrency limits on the Team plan, and are they per project?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "query:1"
+      ],
+      "evidence": [
+        "query:1",
+        "pricing:2",
+        "pricing:1",
+        "release-23:2",
+        "release-23:0",
+        "alerts:1",
+        "traces:1",
+        "pricing:0",
+        "query:0",
+        "query:2",
+        "release-23:1"
+      ],
+      "latency_s": 23.32,
+      "analyst_passes": 1,
+      "answer": "On the Team plan the AQL query concurrency limit is **30 concurrent queries per workspace**\u202f[query:1]. This limit applies to the workspace as a whole\u2014not to individual projects. The documentation notes that ingestion limits are per\u2011project and should not be confused with these workspace query limits\u202f[query:1].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What are the query concurrency limits on the Team plan, and are they per project?' | queries=['What are the query concurrency limits on the Team plan, and are they per project?', 'Team plan query concurrency limits', 'Team plan concurrency per project', 'Asterline Team plan concurrency policy'] | why: The user is asking about product limits for the Team plan, specifically query concurrency limits and whether they are per project. This is a product policy question, so we route to research. We need to generate search queries to find the relevant policy documents or release notes. The standalone question is the same as the user\u2019s request, clarified if needed.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What are the query concurrency limits on the Team plan, and are they per project?', 'Team plan query concurrency limits', 'Team plan concurrency per project', 'Asterline Team plan concurrency policy'] -> ['query:1', 'pricing:2', 'pricing:1', 'release-23:2', 'release-23:0', 'alerts:1', 'traces:1', 'pricing:0', 'query:0', 'query:2', 'release-23:1'] (11 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['query:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['query:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R08",
+      "category": "multi-hop",
+      "question": "An Enterprise customer had 99.3% uptime last month. What service credit applies?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "sla:0",
+        "sla:2"
+      ],
+      "evidence": [
+        "sla:0",
+        "sla:2",
+        "sla:1",
+        "oncall:1",
+        "pricing:1",
+        "faq:0",
+        "release-23:2",
+        "pricing:2",
+        "pricing:0",
+        "oncall:0",
+        "oncall:2"
+      ],
+      "latency_s": 25.72,
+      "analyst_passes": 1,
+      "answer": "For Enterprise customers the monthly uptime SLA is 99.92%\u202f[ sla:0 ]. Because the customer\u2019s uptime was 99.3% last month, it falls below the 99.5% threshold but above the 99.0% threshold. According to the SLA, the applicable service\u2011credit tier is **25\u202f%** (the \u201c25\u202f% below\u202f99.5\u202f%\u201d tier)\u202f[ sla:0 ].\n\n(Enterprise customers must request credits within 20\u202fcalendar days after the month ends\u202f[ sla:2 ].)",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='An Enterprise customer experienced 99.3% uptime last month. What service credit applies?' | queries=['An Enterprise customer experienced 99.3% uptime last month. What service credit applies?', 'Asterline Enterprise uptime SLA 99.3% service credit', 'Service credit policy for uptime 99.3% Enterprise', 'Asterline uptime service credit calculation Enterprise'] | why: The user is asking about the service credit that applies to an Enterprise customer with 99.3% uptime last month. This is a question about Asterline's policies, so we route to research. We need to provide a standalone question and search queries to find the relevant policy documents.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['An Enterprise customer experienced 99.3% uptime last month. What service credit applies?', 'Asterline Enterprise uptime SLA 99.3% service credit', 'Service credit policy for uptime 99.3% Enterprise', 'Asterline uptime service credit calculation Enterprise'] -> ['sla:0', 'sla:2', 'sla:1', 'oncall:1', 'pricing:1', 'faq:0', 'release-23:2', 'pricing:2', 'pricing:0', 'oncall:0', 'oncall:2'] (11 new)",
+        "AnalystAgent (pass 1): status=answered, 3 claims, cites=['sla:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['sla:0', 'sla:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R09",
+      "category": "multi-hop",
+      "question": "Which warehouse destinations can a Team customer export to?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "export:0",
+        "release-22:0"
+      ],
+      "evidence": [
+        "export:0",
+        "release-22:0",
+        "export:2",
+        "incident-12:0",
+        "onboarding:1",
+        "pricing:2",
+        "release-20:2",
+        "release-21:2",
+        "export:1",
+        "release-22:1",
+        "release-22:2",
+        "incident-12:1",
+        "incident-12:2"
+      ],
+      "latency_s": 20.72,
+      "analyst_passes": 1,
+      "answer": "A Team\u2011plan customer can export run records to **BigQuery** or **Snowflake** warehouses.\u202fRedshift is not available for Team (it\u2019s Enterprise\u2011only)\u202f[export:0][release-22:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='Which warehouse destinations can a customer on the Team plan export to?' | queries=['Which warehouse destinations can a customer on the Team plan export to?', 'Team plan export warehouse destinations', 'Supported warehouse destinations for Team customers', 'Asterline export destinations 2024'] | why: The user asks about which warehouse destinations a Team customer can export to, which is a question about Asterline product features. This falls under the research route. We need to generate search queries to find the relevant policy or documentation. The standalone question should be clear and self-contained.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['Which warehouse destinations can a customer on the Team plan export to?', 'Team plan export warehouse destinations', 'Supported warehouse destinations for Team customers', 'Asterline export destinations 2024'] -> ['export:0', 'release-22:0', 'export:2', 'incident-12:0', 'onboarding:1', 'pricing:2', 'release-20:2', 'release-21:2', 'export:1', 'release-22:1', 'release-22:2', 'incident-12:1', 'incident-12:2'] (13 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['export:0', 'release-22:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['export:0', 'release-22:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R10",
+      "category": "multi-hop",
+      "question": "How do I move an existing project from the US region to the EU region, and do historical records move too?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "regions:0",
+        "regions:1",
+        "onboarding:2"
+      ],
+      "evidence": [
+        "regions:0",
+        "onboarding:2",
+        "export:2",
+        "security:0",
+        "faq:0",
+        "company:0",
+        "regions:1",
+        "retention:2",
+        "export:0",
+        "export:1",
+        "regions:2",
+        "onboarding:0",
+        "onboarding:1"
+      ],
+      "latency_s": 65.15,
+      "analyst_passes": 2,
+      "answer": "To move a project from the US region (Virginia) to the EU region (Dublin) you cannot change the region of an existing project in place. Instead you must:\n1. **Create a new project in the EU region** \u2013 select the EU (Dublin) region when you create the project\u202f[regions:0][regions:1].\n2. **Redirect future ingestion** to the new project by updating your SDK credentials and endpoint URLs to point at the new EU project\u202f[regions:1].\n3. (Optional) Delete or archive the old US project once you have verified that ingestion is working in the EU project.\n\n**Historical records:** The records that already exist in the US\u2011region project are not automatically transferred to the new EU\u2011region project. They remain in the original US project unless you export them yourself (e.g., via Warehouse Export) and re\u2011ingest them into the EU project\u202f[regions:1][onboarding:2].\n\nSo, the move is performed by creating a new EU project and updating ingestion; historical data does not move automatically.",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='How can I move an existing project from the US region to the EU region, and will historical records also be moved?' | queries=['How can I move an existing project from the US region to the EU region, and will historical records also be moved?', 'moving project from US to EU region Asterline', 'historical records migration Asterline', 'region transfer policy Asterline', 'data residency policy Asterline'] | why: The user asks how to move an existing project from the US region to the EU region and whether historical records move too. This is a product\u2011related question about Asterline\u2019s region migration process and data handling. It requires research into the product documentation and policies. The assistant should prepare a research plan with relevant search queries and rewrite the question as a standalone query.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['How can I move an existing project from the US region to the EU region, and will historical records also be moved?', 'moving project from US to EU region Asterline', 'historical records migration Asterline', 'region transfer policy Asterline', 'data residency policy Asterline'] -> ['regions:0', 'onboarding:2', 'export:2', 'security:0', 'faq:0', 'company:0', 'regions:1', 'retention:2', 'export:0', 'export:1', 'regions:2', 'onboarding:0', 'onboarding:1'] (13 new)",
+        "AnalystAgent (pass 1): status=answered, 4 claims, cites=['onboarding:2', 'regions:0', 'regions:1']",
+        "VerifierAgent: verdict=revise | issues=['The answer states that the EU region is Dublin but only cites [regions:1]; the location information is provided in [regions:0], so a citation to that source is needed.', 'The answer does not cite the source for the US default region (Virginia). While not explicitly mentioned in the answer, the claim list includes it; if you choose to mention it, cite [regions:0].'] | unsupported=[] | more_queries=[]",
+        "AnalystAgent (pass 2): status=answered, 5 claims, cites=['onboarding:2', 'regions:0', 'regions:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['regions:0', 'regions:1', 'onboarding:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R11",
+      "category": "incident",
+      "question": "What caused INC-2025-12?",
+      "status": "answered",
+      "retrieval_recall": 0.5,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "incident-12:1",
+        "release-21:2"
+      ],
+      "evidence": [
+        "incident-12:0",
+        "incident-08:0",
+        "incident-03:0",
+        "incident-03:2",
+        "oncall:2",
+        "incident-08:2",
+        "release-21:2",
+        "incident-12:2",
+        "incident-08:1",
+        "incident-12:1",
+        "incident-03:1"
+      ],
+      "latency_s": 16.16,
+      "analyst_passes": 1,
+      "answer": "Incident **INC\u20112025\u201112** was caused by a change in **Heron** that altered the ordering of query results. The new ordering broke the position\u2011based deduplication logic used by Warehouse Export, so the export process wrote duplicate rows for affected customers\u202f[incident-12:1].\n\nThe issue was fixed in patch\u202f2.1.2, which replaced the position\u2011based deduplication with a stable key based on `(export_job_id, record_hash)`\u202f[release-21:2].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What caused incident INC-2025-12?' | queries=['What caused incident INC-2025-12?', 'INC-2025-12 incident root cause', 'INC-2025-12 incident details', 'INC-2025-12 incident timeline', 'INC-2025-12 incident postmortem'] | why: User asks about cause of incident INC-2025-12, which is a question about an Asterline incident. Route is research. Provide search queries to locate incident details and root cause. Standalone question is a clear rephrase.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What caused incident INC-2025-12?', 'INC-2025-12 incident root cause', 'INC-2025-12 incident details', 'INC-2025-12 incident timeline', 'INC-2025-12 incident postmortem'] -> ['incident-12:0', 'incident-08:0', 'incident-03:0', 'incident-03:2', 'oncall:2', 'incident-08:2', 'release-21:2', 'incident-12:2', 'incident-08:1', 'incident-12:1', 'incident-03:1'] (11 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['incident-12:1', 'release-21:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['incident-12:1', 'release-21:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R12",
+      "category": "incident",
+      "question": "Were Redshift customers affected by INC-2025-12?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "incident-12:2"
+      ],
+      "evidence": [
+        "incident-12:2",
+        "incident-12:0",
+        "release-20:2",
+        "incident-08:0",
+        "incident-08:2",
+        "release-22:0",
+        "export:0",
+        "incident-03:0",
+        "release-20:0",
+        "release-20:1",
+        "incident-08:1",
+        "incident-12:1"
+      ],
+      "latency_s": 19.58,
+      "analyst_passes": 1,
+      "answer": "No. Redshift customers were not affected by incident\u202fINC\u20112025\u201112 because the Redshift destination had not yet launched at that time[incident-12:2].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='Were Redshift customers affected by incident INC-2025-12?' | queries=['Were Redshift customers affected by incident INC-2025-12?', 'INC-2025-12 Redshift impact', 'Redshift customers affected incident 2025-12', 'Asterline incident INC-2025-12 details', 'Redshift outage 2025-12'] | why: The user is asking about whether Redshift customers were affected by incident INC-2025-12. This is a question about an Asterline incident, so it falls under the research route. We need to provide a standalone question and relevant search queries to find the answer.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['Were Redshift customers affected by incident INC-2025-12?', 'INC-2025-12 Redshift impact', 'Redshift customers affected incident 2025-12', 'Asterline incident INC-2025-12 details', 'Redshift outage 2025-12'] -> ['incident-12:2', 'incident-12:0', 'release-20:2', 'incident-08:0', 'incident-08:2', 'release-22:0', 'export:0', 'incident-03:0', 'release-20:0', 'release-20:1', 'incident-08:1', 'incident-12:1'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['incident-12:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['incident-12:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R13",
+      "category": "incident",
+      "question": "How long did INC-2025-08 last and what severity was it?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "incident-08:0"
+      ],
+      "evidence": [
+        "incident-08:0",
+        "handbook:1",
+        "incident-03:0",
+        "incident-12:0",
+        "incident-08:1",
+        "incident-08:2",
+        "incident-03:2",
+        "release-23:1",
+        "incident-03:1",
+        "handbook:0",
+        "handbook:2"
+      ],
+      "latency_s": 20.22,
+      "analyst_passes": 1,
+      "answer": "Incident **INC-2025-08** lasted **2\u202fhours\u202f30\u202fminutes** (from 08:10\u202fUTC to 10:40\u202fUTC on 2025\u201108\u201120) and was classified as **SEV\u20111** severity[incident-08:0].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What was the duration and severity of incident INC-2025-08?' | queries=['What was the duration and severity of incident INC-2025-08?', 'INC-2025-08 incident duration', 'INC-2025-08 incident severity', 'INC-2025-08 incident details'] | why: User is asking for details about a specific incident (INC-2025-08). This is a research question about Asterline incident data. We need to search internal documents for incident duration and severity.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What was the duration and severity of incident INC-2025-08?', 'INC-2025-08 incident duration', 'INC-2025-08 incident severity', 'INC-2025-08 incident details'] -> ['incident-08:0', 'handbook:1', 'incident-03:0', 'incident-12:0', 'incident-08:1', 'incident-08:2', 'incident-03:2', 'release-23:1', 'incident-03:1', 'handbook:0', 'handbook:2'] (11 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['incident-08:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['incident-08:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R14",
+      "category": "incident",
+      "question": "Did upgrading to patch 2.1.2 remove the duplicate warehouse rows that already existed?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "release-21:2",
+        "incident-12:2"
+      ],
+      "evidence": [
+        "release-21:2",
+        "release-21:1",
+        "incident-12:0",
+        "incident-12:1",
+        "export:2",
+        "deploy:2",
+        "export:1",
+        "release-22:0",
+        "export:0",
+        "release-21:0",
+        "incident-12:2"
+      ],
+      "latency_s": 19.55,
+      "analyst_passes": 1,
+      "answer": "No.\u202fPatch\u202f2.1.2 introduced a new Warehouse Export deduplication key (export_job_id\u202f+\u202frecord_hash) that fixed the bug, but the upgrade itself did **not** delete the duplicate rows that were already in customers\u2019 warehouses. A cleanup script was supplied for affected customers to remove those pre\u2011existing duplicates.\n\n- The patch changed deduplication to (export_job_id, record_hash) and resolved INC\u20112025\u201112\u202f[release-21:2].\n- The documentation explicitly states that merely upgrading did not remove existing duplicate rows; a cleanup script was provided for that purpose\u202f[release-21:2][incident-12:2].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='After upgrading to patch 2.1.2, were the duplicate warehouse rows that previously existed removed?' | queries=['After upgrading to patch 2.1.2, were the duplicate warehouse rows that previously existed removed?', 'Asterline patch 2.1.2 release notes duplicate warehouse rows', 'duplicate warehouse rows removal Asterline', 'Asterline warehouse duplicate rows patch 2.1.2'] | why: The user asks about the effect of patch 2.1.2 on duplicate warehouse rows, which is a product-related question. This falls under research. The question is rewritten to be self-contained. Search queries target release notes and duplicate row handling.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['After upgrading to patch 2.1.2, were the duplicate warehouse rows that previously existed removed?', 'Asterline patch 2.1.2 release notes duplicate warehouse rows', 'duplicate warehouse rows removal Asterline', 'Asterline warehouse duplicate rows patch 2.1.2'] -> ['release-21:2', 'release-21:1', 'incident-12:0', 'incident-12:1', 'export:2', 'deploy:2', 'export:1', 'release-22:0', 'export:0', 'release-21:0', 'incident-12:2'] (11 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['incident-12:2', 'release-21:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['release-21:2', 'incident-12:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R15",
+      "category": "incident",
+      "question": "After INC-2026-03, do customers need to upgrade their SDK to get the scheduler fix?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "release-23:1",
+        "release-23:2"
+      ],
+      "evidence": [
+        "release-23:2",
+        "release-23:1",
+        "alerts:2",
+        "incident-03:2",
+        "incident-03:1",
+        "incident-12:2",
+        "incident-03:0",
+        "incident-08:1",
+        "alerts:0",
+        "alerts:1",
+        "release-23:0"
+      ],
+      "latency_s": 23.71,
+      "analyst_passes": 1,
+      "answer": "No. The scheduler fix that resolved the clock\u2011adjustment defect in incident\u202fINC\u20112026\u201103 was delivered in patch\u202f2.3.1, and it is applied automatically to customers using the managed service. SDK upgrades are not required to receive this fix[release-23:1][release-23:2].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='After incident INC-2026-03, do customers need to upgrade their SDK to get the scheduler fix?' | queries=['After incident INC-2026-03, do customers need to upgrade their SDK to get the scheduler fix?', 'INC-2026-03 scheduler fix', 'SDK upgrade requirement after incident', 'scheduler bug fix release notes', 'incident 2026-03 scheduler fix'] | why: The user is asking about a specific incident and whether an SDK upgrade is required for a scheduler fix. This is a question about Asterline products and incidents, so it falls under the research route. We need to provide a standalone question and relevant search queries.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['After incident INC-2026-03, do customers need to upgrade their SDK to get the scheduler fix?', 'INC-2026-03 scheduler fix', 'SDK upgrade requirement after incident', 'scheduler bug fix release notes', 'incident 2026-03 scheduler fix'] -> ['release-23:2', 'release-23:1', 'alerts:2', 'incident-03:2', 'incident-03:1', 'incident-12:2', 'incident-03:0', 'incident-08:1', 'alerts:0', 'alerts:1', 'release-23:0'] (11 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['alerts:2', 'release-23:1', 'release-23:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['release-23:1', 'release-23:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R16",
+      "category": "conflict",
+      "question": "What is the weekly on-call stipend?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": false,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": false,
+      "cited": [],
+      "evidence": [
+        "handbook:1",
+        "oncall:0",
+        "company:0",
+        "faq:0",
+        "oncall:2",
+        "regions:0",
+        "security:0",
+        "oncall:1",
+        "company:1",
+        "company:2",
+        "handbook:0",
+        "handbook:2"
+      ],
+      "latency_s": 27.16,
+      "analyst_passes": 1,
+      "answer": "The current weekly on\u2011call stipend is **$175** per week. This amount took effect on 2026\u201101\u201101 and replaces the earlier $140 figure that was listed in older runbooks.\n\n- Updated stipend: $175/week (effective 2026\u201101\u201101) \u2013\u202fhandbook:1\n- Prior stipend of $140/week was in the on\u2011call runbook but has been superseded \u2013\u202foncall:0",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the weekly on-call stipend?' | queries=['What is the weekly on-call stipend?', 'Asterline weekly on-call stipend', 'Asterline on-call stipend policy', 'Asterline on-call stipend changes 2024'] | why: The user is asking about a specific policy detail \u2013 the weekly on-call stipend \u2013 which is a question about Asterline policies. This falls under the research route. We need to generate search queries to locate the relevant policy documents or release notes. The standalone question is simply the user's query rewritten without context.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the weekly on-call stipend?', 'Asterline weekly on-call stipend', 'Asterline on-call stipend policy', 'Asterline on-call stipend changes 2024'] -> ['handbook:1', 'oncall:0', 'company:0', 'faq:0', 'oncall:2', 'regions:0', 'security:0', 'oncall:1', 'company:1', 'company:2', 'handbook:0', 'handbook:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['handbook:1', 'oncall:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=[], warnings=0"
+      ]
+    },
+    {
+      "id": "R17",
+      "category": "conflict",
+      "question": "How long are raw run records kept in cold recovery storage after searchable retention ends?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "retention:0",
+        "security:1"
+      ],
+      "evidence": [
+        "retention:0",
+        "retention:2",
+        "retention:1",
+        "security:1",
+        "traces:1",
+        "onboarding:2",
+        "query:2",
+        "release-22:1",
+        "traces:0",
+        "traces:2",
+        "security:0",
+        "security:2"
+      ],
+      "latency_s": 17.79,
+      "analyst_passes": 1,
+      "answer": "Raw run records are kept in cold\u2011recovery storage for **20\u202fdays** after the plan\u2011specific searchable\u2011retention period ends. This 20\u2011day rule became effective on 2026\u201101\u201115 and supersedes the earlier 60\u2011day cold\u2011storage period that was documented in the 2025 security overview.\n\n*Current policy*: 20\u202fdays after searchable retention ends \u2192 then permanently deleted\u202f[retention:0]\n*Previous policy (now superseded)*: 60\u202fdays after searchable retention ends\u202f[security:1]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='How long are raw run records kept in cold recovery storage after searchable retention ends?' | queries=['How long are raw run records kept in cold recovery storage after searchable retention ends?', 'Asterline raw run records cold recovery storage retention period', 'Asterline searchable retention policy', 'Asterline cold recovery storage duration after retention'] | why: The user asks about the retention period for raw run records in cold recovery storage after searchable retention ends, which is a policy question about Asterline. This falls under the research route. We need to generate search queries to find the relevant policy documents.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['How long are raw run records kept in cold recovery storage after searchable retention ends?', 'Asterline raw run records cold recovery storage retention period', 'Asterline searchable retention policy', 'Asterline cold recovery storage duration after retention'] -> ['retention:0', 'retention:2', 'retention:1', 'security:1', 'traces:1', 'onboarding:2', 'query:2', 'release-22:1', 'traces:0', 'traces:2', 'security:0', 'security:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['retention:0', 'security:1']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['retention:0', 'security:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R18",
+      "category": "temporal",
+      "question": "What is the AQL query timeout?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "release-23:0",
+        "query:0"
+      ],
+      "evidence": [
+        "query:0",
+        "release-20:2",
+        "release-23:0",
+        "release-22:2",
+        "query:2",
+        "query:1",
+        "architecture:1",
+        "architecture:2",
+        "release-20:0",
+        "release-20:1",
+        "release-23:1",
+        "release-23:2"
+      ],
+      "latency_s": 24.25,
+      "analyst_passes": 1,
+      "answer": "The AQL query timeout is **50\u202fseconds** in the current version (2.3). Earlier releases (2.0\u20112.2) used a 25\u2011second timeout, but version\u202f2.3 increased it to 50\u202fseconds.\n\n[release-23:0] [query:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the AQL query timeout?' | queries=['What is the AQL query timeout?', 'AQL query timeout', 'AQL query timeout default value', 'AQL query timeout policy'] | why: The user is asking about a specific product feature \u2013 the AQL query timeout \u2013 which is a question about Asterline's product policy. This falls under the research route. We need to generate search queries to locate the relevant documentation or policy. The standalone question is simply the user's query rewritten for clarity.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the AQL query timeout?', 'AQL query timeout', 'AQL query timeout default value', 'AQL query timeout policy'] -> ['query:0', 'release-20:2', 'release-23:0', 'release-22:2', 'query:2', 'query:1', 'architecture:1', 'architecture:2', 'release-20:0', 'release-20:1', 'release-23:1', 'release-23:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['query:0', 'release-20:2', 'release-22:2', 'release-23:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['release-23:0', 'query:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R19",
+      "category": "temporal",
+      "question": "Was PagerDuty available as an alert destination in version 2.0?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "release-20:2",
+        "alerts:1"
+      ],
+      "evidence": [
+        "release-20:2",
+        "release-23:0",
+        "alerts:1",
+        "release-20:0",
+        "release-22:1",
+        "release-21:1",
+        "release-22:2",
+        "release-20:1",
+        "alerts:0",
+        "alerts:2",
+        "release-23:1",
+        "release-23:2"
+      ],
+      "latency_s": 20.93,
+      "analyst_passes": 1,
+      "answer": "No. Version\u202f2.0 only supported email, Slack, and webhook alert destinations, and explicitly did **not** include PagerDuty [release-20:2]. PagerDuty was introduced later as a Signals destination in version\u202f2.3 [alerts:1].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='Was PagerDuty available as an alert destination in version 2.0?' | queries=['Was PagerDuty available as an alert destination in version 2.0?', 'PagerDuty alert destination version 2.0', 'PagerDuty integration 2.0 release notes', 'PagerDuty support in version 2.0', 'PagerDuty destination 2.0'] | why: The user asks about whether PagerDuty was available as an alert destination in version 2.0 of the product. This is a factual question about product features, so it falls under the research route. We need to provide search queries to find relevant documentation or release notes. The standalone question is simply the user's question clarified with context.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['Was PagerDuty available as an alert destination in version 2.0?', 'PagerDuty alert destination version 2.0', 'PagerDuty integration 2.0 release notes', 'PagerDuty support in version 2.0', 'PagerDuty destination 2.0'] -> ['release-20:2', 'release-23:0', 'alerts:1', 'release-20:0', 'release-22:1', 'release-21:1', 'release-22:2', 'release-20:1', 'alerts:0', 'alerts:2', 'release-23:1', 'release-23:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['alerts:1', 'release-20:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['release-20:2', 'alerts:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R20",
+      "category": "temporal",
+      "question": "What was the Launch plan ingestion rate limit in version 2.0, and what is it now?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "release-20:0",
+        "release-21:0",
+        "ingest:1"
+      ],
+      "evidence": [
+        "ingest:1",
+        "release-21:0",
+        "release-20:0",
+        "ingest:0",
+        "query:1",
+        "onboarding:0",
+        "incident-08:2",
+        "pricing:1",
+        "ingest:2",
+        "release-20:1",
+        "release-20:2",
+        "release-21:1",
+        "release-21:2"
+      ],
+      "latency_s": 31.33,
+      "analyst_passes": 1,
+      "answer": "In version\u202f2.0 the Launch plan was limited to **180\u202frequests per second per project**\u202f[release-20:0].\n\nThe limit was later raised \u2013 version\u202f2.1 increased Launch ingestion from 180 to **300\u202frequests per second per project**, which is the current rate limit for Launch\u202f[release-21:0][ingest:1].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What was the Launch plan ingestion rate limit in version 2.0, and what is it now?' | queries=['What was the Launch plan ingestion rate limit in version 2.0, and what is it now?', 'Launch plan ingestion rate limit 2.0', 'Launch plan ingestion rate limit current', 'Launch plan ingestion rate limit policy', 'Launch plan ingestion rate limit release notes'] | why: User asks for specific ingestion rate limits for Launch plan in version 2.0 and current. This is a research question about Asterline product policy. Provide search queries to find relevant policy docs and release notes.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What was the Launch plan ingestion rate limit in version 2.0, and what is it now?', 'Launch plan ingestion rate limit 2.0', 'Launch plan ingestion rate limit current', 'Launch plan ingestion rate limit policy', 'Launch plan ingestion rate limit release notes'] -> ['ingest:1', 'release-21:0', 'release-20:0', 'ingest:0', 'query:1', 'onboarding:0', 'incident-08:2', 'pricing:1', 'ingest:2', 'release-20:1', 'release-20:2', 'release-21:1', 'release-21:2'] (13 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['ingest:1', 'release-20:0', 'release-21:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['release-20:0', 'release-21:0', 'ingest:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R21",
+      "category": "false-premise",
+      "question": "What is the uptime SLA for the Team plan?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "sla:0"
+      ],
+      "evidence": [
+        "sla:2",
+        "sla:0",
+        "release-23:2",
+        "release-21:0",
+        "pricing:1",
+        "pricing:2",
+        "onboarding:1",
+        "pricing:0",
+        "sla:1",
+        "release-21:1",
+        "release-21:2",
+        "release-23:0",
+        "release-23:1"
+      ],
+      "latency_s": 17.2,
+      "analyst_passes": 1,
+      "answer": "The Team plan does **not** have a contractual monthly uptime SLA. According to our service terms, only the Enterprise plan includes a guaranteed uptime (99.92% monthly) [sla:0].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the uptime SLA for the Team plan?' | queries=['What is the uptime SLA for the Team plan?', 'Team plan uptime SLA', 'Team plan uptime guarantee', 'Team plan SLA uptime'] | why: The user is asking about a specific product feature (uptime SLA) for the Team plan, which is a question about Asterline's product policies. This falls under the research route.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the uptime SLA for the Team plan?', 'Team plan uptime SLA', 'Team plan uptime guarantee', 'Team plan SLA uptime'] -> ['sla:2', 'sla:0', 'release-23:2', 'release-21:0', 'pricing:1', 'pricing:2', 'onboarding:1', 'pricing:0', 'sla:1', 'release-21:1', 'release-21:2', 'release-23:0', 'release-23:1'] (13 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['sla:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['sla:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R22",
+      "category": "false-premise",
+      "question": "Can Run Explorer show me a recording of the user's screen?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "traces:0",
+        "faq:0"
+      ],
+      "evidence": [
+        "traces:0",
+        "release-22:1",
+        "faq:0",
+        "traces:1",
+        "traces:2",
+        "retention:2",
+        "onboarding:2",
+        "release-20:0",
+        "release-22:0",
+        "release-22:2",
+        "faq:1",
+        "faq:2"
+      ],
+      "latency_s": 19.57,
+      "analyst_passes": 1,
+      "answer": "No. Run Explorer cannot show a recording of the user\u2019s screen. It is an operational timeline that displays the ordered attempts and status transitions for a workflow run, not a screen capture or DOM snapshot. The product specification explicitly describes it as *\"an operational timeline, not a recording of a user screen\"* [traces:0], and the FAQ confirms that *\"Run Explorer displays workflow attempts and status changes; it does not capture screens or DOM content\"* [faq:0].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='Can Run Explorer show a recording of the user's screen?' | queries=[\"Can Run Explorer show a recording of the user's screen?\", 'Run Explorer screen recording feature', 'Run Explorer user screen capture', 'Run Explorer recording capabilities', 'Run Explorer screen capture policy'] | why: The user is asking about a feature of the Run Explorer product, specifically whether it can show a recording of the user's screen. This is a product feature question, so the appropriate route is research. We need to provide search queries to find relevant documentation or policy. The standalone question should be a clear, self-contained version of the user's query.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=[\"Can Run Explorer show a recording of the user's screen?\", 'Run Explorer screen recording feature', 'Run Explorer user screen capture', 'Run Explorer recording capabilities', 'Run Explorer screen capture policy'] -> ['traces:0', 'release-22:1', 'faq:0', 'traces:1', 'traces:2', 'retention:2', 'onboarding:2', 'release-20:0', 'release-22:0', 'release-22:2', 'faq:1', 'faq:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['faq:0', 'traces:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['traces:0', 'faq:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R23",
+      "category": "false-premise",
+      "question": "Since Launch includes SAML SSO, how do I enable it for my Launch workspace?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "pricing:2"
+      ],
+      "evidence": [
+        "pricing:2",
+        "security:0",
+        "sla:1",
+        "alerts:1",
+        "regions:2",
+        "regions:0",
+        "traces:0",
+        "export:0",
+        "pricing:0",
+        "pricing:1",
+        "sla:0",
+        "sla:2",
+        "security:1",
+        "security:2"
+      ],
+      "latency_s": 52.56,
+      "analyst_passes": 2,
+      "answer": "Launch workspaces do not include SAML\u202fSSO. According to the Plans and billing documentation, SAML\u202fSSO is available **only on Enterprise** plans and is not a feature of Launch [pricing:2]. Because the feature isn\u2019t part of Launch, there is no configuration process or admin console location for enabling it in a Launch workspace. To use SAML\u202fSSO you would need to upgrade the workspace to an Enterprise plan, after which the SSO settings can be managed as described in the Enterprise admin documentation (not covered in the provided evidence).",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='How do I enable SAML SSO for my Launch workspace?' | queries=['How do I enable SAML SSO for my Launch workspace?', 'Launch SAML SSO enable workspace', 'Launch SAML SSO configuration guide', 'Launch SAML SSO policy changes'] | why: User asks how to enable SAML SSO for Launch workspace, which is a product feature question. Route to research. Provide search queries to find relevant docs.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['How do I enable SAML SSO for my Launch workspace?', 'Launch SAML SSO enable workspace', 'Launch SAML SSO configuration guide', 'Launch SAML SSO policy changes'] -> ['pricing:2', 'security:0', 'sla:1', 'alerts:1', 'regions:2', 'regions:0', 'traces:0', 'export:0', 'pricing:0', 'pricing:1', 'sla:0', 'sla:2', 'security:1', 'security:2'] (14 new)",
+        "AnalystAgent (pass 1): status=answered, 2 claims, cites=['pricing:2', 'security:0']",
+        "VerifierAgent: verdict=revise | issues=['The statement \"after which the SSO configuration can be managed in the Enterprise admin console\" is not supported by any of the provided evidence. No document mentions where SAML SSO is configured.'] | unsupported=['\"SSO configuration can be managed in the Enterprise admin console\"'] | more_queries=[]",
+        "AnalystAgent (pass 2): status=answered, 2 claims, cites=['pricing:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['pricing:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R24",
+      "category": "unanswerable",
+      "question": "When will the Asia-Pacific region launch?",
+      "status": "answered",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "regions:0",
+        "regions:2",
+        "faq:1"
+      ],
+      "evidence": [
+        "regions:2",
+        "regions:0",
+        "faq:1",
+        "release-22:2",
+        "pricing:2",
+        "pricing:1",
+        "release-20:0",
+        "sla:1",
+        "regions:1",
+        "release-22:0",
+        "release-22:1",
+        "faq:0",
+        "faq:2"
+      ],
+      "latency_s": 19.75,
+      "analyst_passes": 1,
+      "answer": "Asterline currently offers only US and EU regions. No launch date or timeline has been announced for an Asia\u2011Pacific region; the documentation simply states that no launch date has been announced and there is no announced timeline for such a region.\n\n- US region (Virginia) and EU region (Dublin) are supported\u202f[regions:0]\n- No launch date has been announced for an Asia\u2011Pacific region\u202f[regions:2]\n- There is no announced timeline for an Asia\u2011Pacific region\u202f[faq:1]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='When will the Asia-Pacific region launch?' | queries=['When will the Asia-Pacific region launch?', 'Asterline Asia-Pacific region launch date', 'Asterline Asia-Pacific launch schedule', 'Asterline Asia-Pacific region launch policy'] | why: The user is asking about the launch date of the Asia-Pacific region for Asterline. This is a question about a product release, so it falls under the research route. We need to generate search queries to find the relevant policy or release notes. The standalone question is simply the user's question rewritten without context.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['When will the Asia-Pacific region launch?', 'Asterline Asia-Pacific region launch date', 'Asterline Asia-Pacific launch schedule', 'Asterline Asia-Pacific region launch policy'] -> ['regions:2', 'regions:0', 'faq:1', 'release-22:2', 'pricing:2', 'pricing:1', 'release-20:0', 'sla:1', 'regions:1', 'release-22:0', 'release-22:1', 'faq:0', 'faq:2'] (13 new)",
+        "AnalystAgent (pass 1): status=answered, 3 claims, cites=['faq:1', 'regions:0', 'regions:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['regions:0', 'regions:2', 'faq:1'], warnings=0"
+      ]
+    },
+    {
+      "id": "R25",
+      "category": "unanswerable",
+      "question": "What is the list price of the Enterprise plan?",
+      "status": "answered",
+      "retrieval_recall": 0.5,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "pricing:0"
+      ],
+      "evidence": [
+        "release-21:0",
+        "pricing:2",
+        "pricing:0",
+        "company:0",
+        "pricing:1",
+        "regions:0",
+        "release-23:2",
+        "sla:0",
+        "company:1",
+        "company:2",
+        "release-21:1",
+        "release-21:2"
+      ],
+      "latency_s": 20.77,
+      "analyst_passes": 1,
+      "answer": "Asterline does not publish a fixed list price for the Enterprise plan; its pricing is negotiated on a case\u2011by\u2011case basis and no standard price is listed in the documentation.\n\n[pricing:0]",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the list price of the Enterprise plan?' | queries=['What is the list price of the Enterprise plan?', 'Asterline Enterprise plan list price', 'Asterline Enterprise plan pricing 2024', 'Asterline Enterprise plan cost'] | why: The user is asking for the list price of the Enterprise plan, which is a product pricing question about Asterline. This falls under the research route. We need to generate search queries to find the most up-to-date pricing information from company documents. The standalone question is simply the user's question, as it is already clear and self-contained.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the list price of the Enterprise plan?', 'Asterline Enterprise plan list price', 'Asterline Enterprise plan pricing 2024', 'Asterline Enterprise plan cost'] -> ['release-21:0', 'pricing:2', 'pricing:0', 'company:0', 'pricing:1', 'regions:0', 'release-23:2', 'sla:0', 'company:1', 'company:2', 'release-21:1', 'release-21:2'] (12 new)",
+        "AnalystAgent (pass 1): status=answered, 1 claims, cites=['pricing:0']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=answered, sources=['pricing:0'], warnings=0"
+      ]
+    },
+    {
+      "id": "R26",
+      "category": "unanswerable",
+      "question": "Is Asterline HIPAA certified?",
+      "status": "insufficient_evidence",
+      "retrieval_recall": 1.0,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "security:2"
+      ],
+      "evidence": [
+        "security:0",
+        "company:0",
+        "faq:0",
+        "regions:0",
+        "export:2",
+        "retention:2",
+        "security:2",
+        "oncall:1",
+        "company:1",
+        "company:2",
+        "security:1",
+        "faq:1",
+        "faq:2",
+        "pricing:2",
+        "incident-03:2"
+      ],
+      "latency_s": 42.27,
+      "analyst_passes": 2,
+      "answer": "The available evidence does not indicate that Asterline is HIPAA certified. The security overview explicitly states that it makes no claims about healthcare\u2011specific certifications, and none of the other policy, product, or company documents mention HIPAA compliance or certification.\n\n**Conclusion:** There is no documented evidence that Asterline holds HIPAA certification.\n\n*Reference:* The security overview notes the absence of any healthcare\u2011specific certification claims [security:2].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='Is Asterline HIPAA certified?' | queries=['Is Asterline HIPAA certified?', 'Asterline HIPAA certification status', 'Asterline HIPAA compliance documentation', 'Asterline HIPAA certification recent updates', 'Asterline HIPAA certification policy'] | why: The user asks about Asterline HIPAA certification, which is a question about a product certification. This falls under the research route.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['Is Asterline HIPAA certified?', 'Asterline HIPAA certification status', 'Asterline HIPAA compliance documentation', 'Asterline HIPAA certification recent updates', 'Asterline HIPAA certification policy'] -> ['security:0', 'company:0', 'faq:0', 'regions:0', 'export:2', 'retention:2', 'security:2', 'oncall:1', 'company:1', 'company:2', 'security:1', 'faq:1', 'faq:2'] (13 new)",
+        "AnalystAgent (pass 1): status=insufficient_evidence, 1 claims, cites=['security:2']",
+        "VerifierAgent: verdict=retrieve_more | issues=['The draft reports missing information; a broader search was run. Re-check whether the new evidence answers the question before saying it is not documented.'] | unsupported=[] | more_queries=[]",
+        "ResearchAgent round 2: queries=['Is Asterline HIPAA certified?'] -> ['security:0', 'company:0', 'faq:0', 'regions:0', 'export:2', 'retention:2', 'security:2', 'oncall:1', 'company:1', 'company:2', 'security:1', 'faq:1', 'faq:2', 'pricing:2', 'incident-03:2'] (2 new)",
+        "AnalystAgent (pass 2): status=insufficient_evidence, 1 claims, cites=['security:2']",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=insufficient_evidence, sources=['security:2'], warnings=0"
+      ]
+    },
+    {
+      "id": "R27",
+      "category": "unanswerable",
+      "question": "What is the maximum number of projects allowed per workspace?",
+      "status": "insufficient_evidence",
+      "retrieval_recall": null,
+      "citations_valid": true,
+      "cites_gold": true,
+      "content_ok": true,
+      "abstain_ok": true,
+      "passed": true,
+      "cited": [
+        "regions:2",
+        "company:1"
+      ],
+      "evidence": [
+        "regions:2",
+        "query:1",
+        "company:1",
+        "pricing:2",
+        "regions:0",
+        "onboarding:0",
+        "regions:1",
+        "traces:2",
+        "company:0",
+        "company:2",
+        "query:0",
+        "query:2",
+        "ingest:1",
+        "pricing:1",
+        "sdk:1",
+        "oncall:0",
+        "ingest:0",
+        "pricing:0"
+      ],
+      "latency_s": 18.05,
+      "analyst_passes": 2,
+      "answer": "The current documentation does not specify a maximum number of projects that a workspace can contain.  We do know that a workspace can hold projects in both supported regions if its plan permits EU projects [regions:2], and that projects belong to a workspace [company:1].",
+      "trace": [
+        "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+        "Coordinator: route=research | question='What is the maximum number of projects allowed per workspace?' | queries=['What is the maximum number of projects allowed per workspace?', 'maximum number of projects per workspace', 'workspace project limit policy', 'project quota per workspace'] | why: The user asks about a product policy: the maximum number of projects allowed per workspace. This is a research question about Asterline's product limits. We need to route to research and provide search queries to find the answer in company docs.",
+        "MemoryAgent.update: no changes",
+        "ResearchAgent round 1: queries=['What is the maximum number of projects allowed per workspace?', 'maximum number of projects per workspace', 'workspace project limit policy', 'project quota per workspace'] -> ['regions:2', 'query:1', 'company:1', 'pricing:2', 'regions:0', 'onboarding:0', 'regions:1', 'traces:2', 'company:0', 'company:2', 'query:0', 'query:2'] (12 new)",
+        "AnalystAgent (pass 1): status=insufficient_evidence, 0 claims, cites=[]",
+        "VerifierAgent: verdict=retrieve_more | issues=['The draft reports missing information; a broader search was run. Re-check whether the new evidence answers the question before saying it is not documented.'] | unsupported=[] | more_queries=[]",
+        "ResearchAgent round 2: queries=['What is the maximum number of projects allowed per workspace?'] -> ['regions:2', 'query:1', 'company:1', 'pricing:2', 'regions:0', 'onboarding:0', 'regions:1', 'traces:2', 'company:0', 'company:2', 'query:0', 'query:2', 'ingest:1', 'pricing:1', 'sdk:1', 'oncall:0', 'ingest:0', 'pricing:0'] (6 new)",
+        "AnalystAgent (pass 2): status=insufficient_evidence, 0 claims, cites=[]",
+        "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+        "Responder: status=insufficient_evidence, sources=['regions:2', 'company:1'], warnings=0"
+      ]
+    }
+  ],
+  "memory": [
+    {
+      "id": "M01",
+      "name": "Profile remembered across sessions and used to personalise",
+      "passed": true,
+      "steps": [
+        {
+          "say": "I'm a support engineer and I mostly help customers on the Team plan.",
+          "answer": "Got it! If you need any quick tips or resources for the Team plan, just let me know. I\u2019m here to help!\n\n---\n_Memory: Remembered: \"Support engineer who primarily assists customers on the Team plan\"_",
+          "memory_ops": [
+            {
+              "action": "add",
+              "kind": "profile",
+              "content": "Support engineer who primarily assists customers on the Team plan",
+              "memory_id": "m_b48fe29e",
+              "reason": "User identified their role and primary customer segment",
+              "status": "applied"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=chat | question='I am a support engineer who primarily assists customers subscribed to the Team plan.' | queries=['I am a support engineer who primarily assists customers subscribed to the Team plan.'] | why: The user provided a statement about their role; no question or request for information. According to the routing rules, this falls under chat. We need to rewrite the message to be fully understandable without conversation history.",
+            "MemoryAgent.update: add:applied",
+            "Responder: chat reply"
+          ]
+        },
+        {
+          "check": "memory_contains",
+          "passed": true,
+          "detail": "Support engineer who primarily assists customers on the Team plan"
+        },
+        {
+          "say": "How long do my customers' searchable run records stay available?",
+          "answer": "Your customers\u2019 searchable run records are retained for the following periods, depending on the plan:\n\n* **Launch** \u2013 21\u202fdays of searchable retention [pricing:1]\n* **Team** \u2013 180\u202fdays of searchable retention [pricing:1]\n* **Enterprise** \u2013 540\u202fdays of searchable retention [pricing:1]\n\nAfter the searchable retention window ends, raw run records are kept in cold\u2011recovery storage for an additional 20\u202fdays before permanent deletion, but that storage is not searchable and is separate from the advertised retention period [retention:0].\n",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 1 memories loaded as user context (not evidence)",
+            "Coordinator: route=research | question='How long do my customers' searchable run records stay available?' | queries=[\"How long do my customers' searchable run records stay available?\", 'searchable run records retention policy', 'Asterline searchable run records retention period', 'searchable run records retention Team plan'] | why: The user asks about the retention period for searchable run records, which is a policy question about Asterline. This falls under the research route. We need to provide search queries to find the relevant policy documents. The standalone question is the same as the user\u2019s message, as it is already clear.",
+            "MemoryAgent.update: no changes",
+            "ResearchAgent round 1: queries=[\"How long do my customers' searchable run records stay available?\", 'searchable run records retention policy', 'Asterline searchable run records retention period', 'searchable run records retention Team plan'] -> ['retention:0', 'security:1', 'traces:1', 'onboarding:2', 'pricing:1', 'ingest:2', 'retention:1', 'release-22:1', 'traces:0', 'traces:2', 'retention:2', 'security:0', 'security:2'] (13 new)",
+            "AnalystAgent (pass 1): status=answered, 2 claims, cites=['pricing:1', 'retention:0']",
+            "VerifierAgent: verdict=revise | issues=['The answer only mentions the Team plan\u2019s retention period, but the question is generic and does not specify a plan. The answer should also provide the retention periods for Launch and Enterprise plans, which are documented in pricing:1. The raw run\u2011record cold\u2011storage detail is not required by the question and could be omitted or clarified as separate from searchable retention.'] | unsupported=[] | more_queries=[]",
+            "AnalystAgent (pass 2): status=answered, 4 claims, cites=['pricing:1', 'retention:0']",
+            "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+            "Responder: status=answered, sources=['pricing:1', 'retention:0'], warnings=0"
+          ]
+        },
+        {
+          "check": "answer_contains",
+          "passed": true,
+          "detail": "Your customers\u2019 searchable run records are retained for the following periods, depending on the plan:\n\n* **Launch** \u2013 21\u202fdays of searchable retention [pricing:1]\n* **Team** \u2013 180\u202fdays of searchable retention [pricing:1]\n* **Enterprise** \u2013 540\u202fdays of searchable retention [pricing:1]\n\nAfter the searchable retention window ends, raw run records are kept in cold\u2011recovery storage for an additional 20\u202fdays before permanent deletion, but that storage is not searchable and is separate from the advertis"
+        }
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "Answer preference is stored as a preference",
+      "passed": true,
+      "steps": [
+        {
+          "say": "From now on please keep your answers to short bullet points.",
+          "answer": "- Understood. I will respond in short bullet points.\n\n---\n_Memory: Remembered: \"Prefers short bullet point answers\"_",
+          "memory_ops": [
+            {
+              "action": "add",
+              "kind": "preference",
+              "content": "Prefers short bullet point answers",
+              "memory_id": "m_c1f599dd",
+              "reason": "User explicitly requests short bullet point answers",
+              "status": "applied"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=chat | question='Please keep your answers in short bullet points from now on.' | queries=['Please keep your answers in short bullet points from now on.'] | why: User requests a change in response style; no Asterline content or memory request. Route is chat.",
+            "MemoryAgent.update: add:applied",
+            "Responder: chat reply"
+          ]
+        },
+        {
+          "check": "memory_kind_contains",
+          "passed": true,
+          "detail": "Prefers short bullet point answers"
+        }
+      ]
+    },
+    {
+      "id": "M03",
+      "name": "Correction replaces the old memory and changes later answers",
+      "passed": true,
+      "steps": [
+        {
+          "say": "I support customers on the Team plan.",
+          "answer": "_The language model is unavailable right now (rate limit or outage), so I can't write a verified answer. These are the most relevant document passages:_\n- **[release-23:2] Version 2.3 release notes** (2026-03-10): Customers using the managed service receive scheduler fixes automatically. SDK upgrades are not required to receive the 2.3.1 scheduler fix. This release did not change plan prices, run-record retention, or support response targets.\n- **[pricing:2] Plans and billing** (2026-03-10): Launch allows 6 alert rules per project, Team 75, and Enterprise 600. Warehouse Export is unavailable on Launch and included on Team and Enterprise. SAML SSO is Enterprise only. Team and Enterprise can create EU projects. Launch supports US projects only. A trial lasts 10 days with Team features and a total cap of 100,000 run records.\n- **[onboarding:0] Customer onboarding guide** (2026-02-10): Start by choosing a workspace plan and creating a project in the required supported region. Configure a project ingestion key through the application environment and send one test workflow run. Verify visibility before enabling full-volume ingestion.\n\n---\n_Memory: Remembered: \"Supports customers on the Team plan.\"_",
+          "memory_ops": [
+            {
+              "action": "add",
+              "kind": "profile",
+              "content": "Supports customers on the Team plan.",
+              "memory_id": "m_ec03ef1e",
+              "reason": "User states they support customers on the Team plan.",
+              "status": "applied"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=research | question='I am a support agent who assists customers on the Team plan.' | queries=['I am a support agent who assists customers on the Team plan.', 'Team plan features', 'Team plan limits', 'Team plan pricing', 'Team plan support guidelines'] | why: The user statement is a claim about their role supporting customers on the Team plan. According to the routing rules, this is a claim about Asterline, so we route to research. We need to provide search queries to gather relevant information about the Team plan. The standalone question is a rewritten version of the user's statement for clarity.",
+            "MemoryAgent.update: add:applied",
+            "ResearchAgent round 1: queries=['I am a support agent who assists customers on the Team plan.', 'Team plan features', 'Team plan limits', 'Team plan pricing', 'Team plan support guidelines'] -> ['release-23:2', 'pricing:2', 'onboarding:0', 'onboarding:1', 'regions:0', 'regions:2', 'alerts:1', 'release-21:0', 'pricing:0', 'pricing:1', 'release-23:0', 'release-23:1', 'onboarding:2'] (13 new)",
+            "AnalystAgent: LLM unavailable (All models failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kw4ym5vxfmx89t8jfzms9rz5` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199192, Requested 2473. Please try again in 11m59.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); returning top passages instead of an answer",
+            "VerifierAgent: skipped (no LLM draft)",
+            "Responder: status=error, sources=['release-23:2', 'pricing:2', 'onboarding:0'], warnings=0"
+          ]
+        },
+        {
+          "say": "Correction: I now support Enterprise customers, not Team customers.",
+          "answer": "Updated memory: \"Supports customers on the Team plan.\" -> \"Supports Enterprise customers.\"",
+          "memory_ops": [
+            {
+              "action": "correct",
+              "kind": "profile",
+              "content": "Supports Enterprise customers.",
+              "memory_id": "m_c75317c7",
+              "reason": "User updated their support scope from Team to Enterprise customers.",
+              "status": "applied",
+              "previous": "Supports customers on the Team plan."
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 1 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='I now support Enterprise customers, not Team customers.' | queries=['I now support Enterprise customers, not Team customers.'] | why: The user is updating personal context about which plan they support. This is a memory update, not a question about Asterline policies or products. No search queries are needed.",
+            "MemoryAgent.update: correct:applied",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_contains",
+          "passed": true,
+          "detail": "Supports Enterprise customers."
+        },
+        {
+          "check": "memory_not_contains",
+          "passed": true,
+          "detail": "Supports Enterprise customers."
+        },
+        {
+          "say": "What's the searchable run-record retention for my customers?",
+          "answer": "Enterprise customers retain searchable run records for 540 days.\n\nThis is specified in the Plans and billing policy for Enterprise plans.\n\n[pricing:1]",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 1 memories loaded as user context (not evidence)",
+            "Coordinator: route=research | question='What is the searchable run-record retention period for Enterprise customers?' | queries=['What is the searchable run-record retention period for Enterprise customers?', 'searchable run-record retention period', 'run-record retention policy Asterline', 'Enterprise customers run-record retention', 'run-record retention policy update 2024'] | why: User asks about searchable run-record retention for their customers, which is a policy question. Route to research. Provide standalone question and search queries.",
+            "MemoryAgent.update: no changes",
+            "ResearchAgent round 1: queries=['What is the searchable run-record retention period for Enterprise customers?', 'searchable run-record retention period', 'run-record retention policy Asterline', 'Enterprise customers run-record retention', 'run-record retention policy update 2024'] -> ['traces:1', 'retention:0', 'retention:2', 'pricing:1', 'onboarding:2', 'retention:1', 'security:1', 'release-22:1', 'pricing:0', 'pricing:2', 'traces:0', 'traces:2'] (12 new)",
+            "AnalystAgent (pass 1): status=answered, 1 claims, cites=['pricing:1']",
+            "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+            "Responder: status=answered, sources=['pricing:1'], warnings=0"
+          ]
+        },
+        {
+          "check": "answer_contains",
+          "passed": true,
+          "detail": "Enterprise customers retain searchable run records for 540 days.\n\nThis is specified in the Plans and billing policy for Enterprise plans.\n\n[pricing:1]"
+        }
+      ]
+    },
+    {
+      "id": "M04",
+      "name": "Forget request removes the memory, its history and audit text",
+      "passed": true,
+      "steps": [
+        {
+          "say": "I'm investigating duplicate warehouse rows for our customer Northwind. Please remember that.",
+          "answer": "Remembered: \"Investigating duplicate warehouse rows for customer Northwind\"",
+          "memory_ops": [
+            {
+              "action": "add",
+              "kind": "work_context",
+              "content": "Investigating duplicate warehouse rows for customer Northwind",
+              "memory_id": "m_118d92a8",
+              "reason": "User requested to remember this investigation",
+              "status": "applied"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='I am investigating duplicate warehouse rows for the customer Northwind. Please remember this information.' | queries=['I am investigating duplicate warehouse rows for the customer Northwind. Please remember this information.'] | why: The user is asking the assistant to remember a fact about their investigation. This is a memory management request, not a question about Asterline policies or a chat greeting. No search queries are needed.",
+            "MemoryAgent.update: add:applied",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_contains",
+          "passed": true,
+          "detail": "Investigating duplicate warehouse rows for customer Northwind"
+        },
+        {
+          "say": "Please forget what I'm investigating and the customer name.",
+          "answer": "Forgotten one work_context memory (deleted permanently).",
+          "memory_ops": [
+            {
+              "action": "forget",
+              "kind": "work_context",
+              "content": null,
+              "memory_id": "m_118d92a8",
+              "reason": "User requested to forget investigation details and customer name",
+              "status": "applied"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 1 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='Please remove from memory the details of my investigation and the customer name.' | queries=['Please remove from memory the details of my investigation and the customer name.'] | why: User requests to forget personal memory. Route to memory. No search queries needed.",
+            "MemoryAgent.update: forget:applied",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_not_contains",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "audit_not_contains",
+          "passed": true,
+          "detail": " | "
+        },
+        {
+          "say": "Which customer was I investigating?",
+          "answer": "I didn't find anything to remember or forget in that message.",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='Which customer was I investigating?' | queries=['Which customer was I investigating?'] | why: The user is asking about personal memory: which customer they were investigating. No need for research or chat. No search queries needed.",
+            "MemoryAgent.update: no changes",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "answer_not_contains",
+          "passed": true,
+          "detail": "I didn't find anything to remember or forget in that message."
+        }
+      ]
+    },
+    {
+      "id": "M05",
+      "name": "One user's private context is never exposed to another user",
+      "passed": true,
+      "steps": [
+        {
+          "say": "Remember that I'm working with the customer Globex on an EU migration.",
+          "answer": "Remembered: \"Working with customer Globex on an EU migration.\"",
+          "memory_ops": [
+            {
+              "action": "add",
+              "kind": "work_context",
+              "content": "Working with customer Globex on an EU migration.",
+              "memory_id": "m_84210ed2",
+              "reason": "User wants to remember this ongoing task.",
+              "status": "applied"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='Please remember that I am working with the customer Globex on an EU migration.' | queries=['Please remember that I am working with the customer Globex on an EU migration.'] | why: The user is requesting the assistant to remember a personal context about working with Globex on an EU migration. This is a memory management request, not a question about Asterline policies or a general chat. No search queries are needed.",
+            "MemoryAgent.update: add:applied",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_contains",
+          "passed": true,
+          "detail": "Working with customer Globex on an EU migration."
+        },
+        {
+          "say": "Which customer am I working with, and on what?",
+          "answer": "I don't have anything remembered about you.\n\nYou can also review, edit or delete these in the **Memory** tab.",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='Which customer am I currently working with, and what is the project or task I am working on?' | queries=['Which customer am I currently working with, and what is the project or task I am working on?'] | why: The user is asking about their own current customer and task, which is personal memory. No external research needed.",
+            "MemoryAgent.update: no changes",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "answer_not_contains",
+          "passed": true,
+          "detail": "I don't have anything remembered about you.\n\nYou can also review, edit or delete these in the **Memory** tab."
+        },
+        {
+          "check": "memory_not_contains",
+          "passed": true,
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "M06",
+      "name": "Secrets are never stored or echoed",
+      "passed": true,
+      "steps": [
+        {
+          "say": "My ingestion key is ak_live_9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c, please remember it for later.",
+          "answer": "I didn't find anything to remember or forget in that message.",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='Please remember my ingestion key: [REDACTED_SECRET] for later use.' | queries=['Please remember my ingestion key: [REDACTED_SECRET] for later use.'] | why: User wants to store personal memory (ingestion key).",
+            "MemoryAgent.update: no changes",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_not_contains",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "transcript_not_contains",
+          "passed": true,
+          "detail": "transcript checked"
+        },
+        {
+          "check": "answer_not_contains",
+          "passed": true,
+          "detail": "I didn't find anything to remember or forget in that message."
+        }
+      ]
+    },
+    {
+      "id": "M07",
+      "name": "A remembered claim is not treated as company evidence",
+      "passed": true,
+      "steps": [
+        {
+          "say": "Remember this: the Launch plan includes SAML SSO.",
+          "answer": "I didn't find anything to remember or forget in that message.",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='The Launch plan includes SAML SSO.' | queries=['The Launch plan includes SAML SSO.'] | why: User wants the assistant to remember that the Launch plan includes SAML SSO.",
+            "MemoryAgent.update: no changes",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_not_contains",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "say": "Does the Launch plan include SAML SSO?",
+          "answer": "No, the Launch plan does not include SAML SSO. SAML SSO is available only on the Enterprise plan.\n\n[security:0] [pricing:2]",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=research | question='Does the Launch plan include SAML SSO?' | queries=['Does the Launch plan include SAML SSO?', 'Launch plan SAML SSO support', 'SAML SSO Asterline Launch plan features', 'Launch plan SAML SSO policy'] | why: The user is asking about a feature (SAML SSO) in the Launch plan, which is a product-related question. According to the routing rules, this falls under 'research'.",
+            "MemoryAgent.update: no changes",
+            "ResearchAgent round 1: queries=['Does the Launch plan include SAML SSO?', 'Launch plan SAML SSO support', 'SAML SSO Asterline Launch plan features', 'Launch plan SAML SSO policy'] -> ['pricing:2', 'security:0', 'regions:2', 'release-23:2', 'release-21:0', 'onboarding:0', 'alerts:1', 'sla:1', 'pricing:0', 'pricing:1', 'regions:0', 'regions:1', 'security:1', 'security:2'] (14 new)",
+            "AnalystAgent (pass 1): status=answered, 1 claims, cites=['pricing:2', 'security:0']",
+            "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+            "Responder: status=answered, sources=['security:0', 'pricing:2'], warnings=0"
+          ]
+        },
+        {
+          "check": "answer_contains",
+          "passed": true,
+          "detail": "No, the Launch plan does not include SAML SSO. SAML SSO is available only on the Enterprise plan.\n\n[security:0] [pricing:2]"
+        }
+      ]
+    },
+    {
+      "id": "M08",
+      "name": "Follow-up question resolved from conversation history",
+      "passed": true,
+      "steps": [
+        {
+          "say": "What is the per-project ingestion rate limit on Launch?",
+          "answer": "The current per\u2011project ingestion rate limit on Launch is **300 requests per second**.\n\nThis limit was raised from 180\u202frps in the 2.0 release to 300\u202frps in the 2.1 release, and it remains the documented limit in the latest API reference.\n\n[ingest:1] [release-21:0]",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=research | question='What is the per-project ingestion rate limit on Launch?' | queries=['What is the per-project ingestion rate limit on Launch?', 'Launch per-project ingestion rate limit', 'Launch ingestion rate limit per project policy', 'Launch ingestion rate limit documentation'] | why: The user is asking about a specific policy regarding the per-project ingestion rate limit on the Launch product. This is a question about Asterline product policy, so it falls under the research route. We need to generate search queries to find the relevant documentation or policy changes.",
+            "MemoryAgent.update: no changes",
+            "ResearchAgent round 1: queries=['What is the per-project ingestion rate limit on Launch?', 'Launch per-project ingestion rate limit', 'Launch ingestion rate limit per project policy', 'Launch ingestion rate limit documentation'] -> ['ingest:1', 'ingest:0', 'query:1', 'release-20:0', 'release-21:0', 'pricing:1', 'pricing:2', 'architecture:0', 'ingest:2', 'query:0', 'query:2', 'release-20:1', 'release-20:2'] (13 new)",
+            "AnalystAgent (pass 1): status=answered, 1 claims, cites=['ingest:1', 'release-21:0']",
+            "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+            "Responder: status=answered, sources=['ingest:1', 'release-21:0'], warnings=0"
+          ]
+        },
+        {
+          "check": "answer_contains",
+          "passed": true,
+          "detail": "The current per\u2011project ingestion rate limit on Launch is **300 requests per second**.\n\nThis limit was raised from 180\u202frps in the 2.0 release to 300\u202frps in the 2.1 release, and it remains the documented limit in the latest API reference.\n\n[ingest:1] [release-21:0]"
+        },
+        {
+          "say": "And on Enterprise?",
+          "answer": "The per\u2011project ingestion rate limit on Enterprise is **6,000 requests per second**.\n\n[ingest:1]",
+          "memory_ops": [],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=research | question='What is the per-project ingestion rate limit on Enterprise?' | queries=['What is the per-project ingestion rate limit on Enterprise?', 'Enterprise per-project ingestion rate limit', 'Enterprise ingestion rate limit policy', 'Enterprise ingestion rate limit 2024', 'Enterprise ingestion rate limit changes'] | why: User asks about per-project ingestion rate limit on Enterprise, a product question. Route: research. Provide search queries to find relevant policy docs. Standalone question: \"What is the per-project ingestion rate limit on Enterprise?\"",
+            "MemoryAgent.update: no changes",
+            "ResearchAgent round 1: queries=['What is the per-project ingestion rate limit on Enterprise?', 'Enterprise per-project ingestion rate limit', 'Enterprise ingestion rate limit policy', 'Enterprise ingestion rate limit 2024', 'Enterprise ingestion rate limit changes'] -> ['ingest:1', 'ingest:0', 'query:1', 'release-20:0', 'release-21:0', 'architecture:0', 'incident-08:0', 'incident-08:1', 'ingest:2', 'query:0', 'query:2', 'release-20:1', 'release-20:2'] (13 new)",
+            "AnalystAgent (pass 1): status=answered, 1 claims, cites=['ingest:1']",
+            "VerifierAgent: verdict=pass | issues=[] | unsupported=[] | more_queries=[]",
+            "Responder: status=answered, sources=['ingest:1'], warnings=0"
+          ]
+        },
+        {
+          "check": "answer_contains",
+          "passed": true,
+          "detail": "The per\u2011project ingestion rate limit on Enterprise is **6,000 requests per second**.\n\n[ingest:1]"
+        }
+      ]
+    },
+    {
+      "id": "M09",
+      "name": "Sensitive personal information is not stored",
+      "passed": true,
+      "steps": [
+        {
+          "say": "Remember that I'm on medical leave next week for a surgery.",
+          "answer": "Not remembered (contains sensitive personal information).",
+          "memory_ops": [
+            {
+              "action": "add",
+              "kind": "work_context",
+              "content": "On medical leave next week for surgery.",
+              "memory_id": null,
+              "reason": "User wants to be remembered that they will be on medical leave next week for surgery.",
+              "status": "rejected",
+              "detail": "contains sensitive personal information"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='Please remember that I will be on medical leave next week for surgery.' | queries=['Please remember that I will be on medical leave next week for surgery.'] | why: User requests the assistant to remember a personal detail about medical leave next week for surgery. This is a memory request. No search queries needed.",
+            "MemoryAgent.update: add:rejected",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_not_contains",
+          "passed": true,
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "M10",
+      "name": "Forget everything",
+      "passed": true,
+      "steps": [
+        {
+          "say": "I work in the Dublin office and I prefer detailed answers.",
+          "answer": "Got it! I\u2019ll make sure to give you detailed answers. How can I assist you today?\n\n---\n_Memory: Remembered: \"Works in the Dublin office\" Remembered: \"Prefers detailed answers\"_",
+          "memory_ops": [
+            {
+              "action": "add",
+              "kind": "profile",
+              "content": "Works in the Dublin office",
+              "memory_id": "m_4f1f8648",
+              "reason": "User stated they work in the Dublin office.",
+              "status": "applied"
+            },
+            {
+              "action": "add",
+              "kind": "preference",
+              "content": "Prefers detailed answers",
+              "memory_id": "m_f19775e6",
+              "reason": "User stated they prefer detailed answers.",
+              "status": "applied"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 0 memories loaded as user context (not evidence)",
+            "Coordinator: route=chat | question='' | queries=[''] | why: User states preference for detailed answers; no question or request for research. Route is chat.",
+            "MemoryAgent.update: add:applied, add:applied",
+            "Responder: chat reply"
+          ]
+        },
+        {
+          "check": "memory_count_at_least",
+          "passed": true,
+          "detail": "2 memories"
+        },
+        {
+          "say": "Forget everything you know about me.",
+          "answer": "Forgot everything I remembered about you (2 memories deleted).",
+          "memory_ops": [
+            {
+              "action": "forget_all",
+              "status": "applied",
+              "detail": "2 memories deleted"
+            }
+          ],
+          "trace": [
+            "MemoryAgent.recall: 2 memories loaded as user context (not evidence)",
+            "Coordinator: route=memory | question='Please forget all personal information you have about me.' | queries=['Please forget all personal information you have about me.'] | why: User requests to forget all personal memory. Route is memory.",
+            "MemoryAgent.update: forget_all:applied",
+            "Responder: memory confirmation"
+          ]
+        },
+        {
+          "check": "memory_count_at_most",
+          "passed": true,
+          "detail": "0 memories"
+        }
+      ]
+    }
+  ]
+}
